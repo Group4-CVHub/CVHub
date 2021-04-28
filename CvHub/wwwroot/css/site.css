@@ -7,9 +7,24 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/* Changes title color */
+
+h4.cvhub {
+    color: #0f4c75;
+}
+
+/* Changes tab color */
+h6.tab {
+    color: #0f4c75;
+}
+
+    h6.tab:hover {
+        color: #3282b8;
+    }
+
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #cdcdcd;
 }
 
 .btn-primary {
@@ -19,9 +34,9 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
@@ -36,7 +51,7 @@ html {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
