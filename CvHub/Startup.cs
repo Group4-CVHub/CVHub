@@ -1,4 +1,5 @@
 using CVHub.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,24 @@ namespace CvHub
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Denna service gör så att man kan kräva inloggning på vissa delar av hemsidan genom att kalla på [Authorize].
+            services.AddAuthentication(options =>
+                    {
+                        //Detta gör så att inställningarna ställs in efter CookieAuthentications standardinställningar
+                        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    })
+                    .AddCookie(options =>
+                    {
+                        //Användaren skickas hit om åtkomsten nekas.
+                        options.LoginPath = "/User/SignIn";
+                    })
+                    .AddFacebook(options =>
+                    {
+                        //De här inställningar kopplar ihop denna appen med min app som är skapad på developers.facebook.com
+                        options.AppId = "1011233316074653";
+                        options.AppSecret = "fe447e4272d66875b000a9542fdf6aed";
+                    });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -49,6 +68,8 @@ namespace CvHub
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
