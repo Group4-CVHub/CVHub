@@ -1,11 +1,4 @@
-﻿.login_form_wrapper {
-    float: left;
-    width: 100%;
-    padding-top: 40px;
-    background-color: grey
-}
-
-.login_wrapper {
+﻿.login_wrapper {
     float: left;
     width: 100%;
     background: #fff;
