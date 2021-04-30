@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CvHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210427124547_1")]
+    [Migration("20210429084708_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,9 +89,12 @@ namespace CvHub.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ValidationToken")
+                        .HasColumnType("int");
+
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CVHub.Models.Cv", b =>

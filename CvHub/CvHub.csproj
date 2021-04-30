@@ -16,4 +16,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\socialMedia.css" />
+  </ItemGroup>
+
 </Project>

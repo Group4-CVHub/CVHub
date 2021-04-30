@@ -1,9 +1,8 @@
 ﻿using CVHub.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CvHub.Models
 {
@@ -15,12 +14,13 @@ namespace CvHub.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Enter a password")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Enter first name"), Range(1, 50, ErrorMessage = "Name to long!")]
+        [Required(ErrorMessage = "Enter first name"), Range(1, 50, ErrorMessage = "Name to long!"), DisplayName("First Name")]
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "Enter last name"), Range(1, 50, ErrorMessage = "Name to long!")]
+        [Required(ErrorMessage = "Enter last name"), Range(1, 50, ErrorMessage = "Name to long!"), DisplayName("Last Name")]
         public string LastName { get; set; }
         [Phone]
         public string PhoneNumber { get; set; }
+        public int ValidationToken { get; set; }
         public ICollection<Cv> Cvs { get; set; }
     }
 }

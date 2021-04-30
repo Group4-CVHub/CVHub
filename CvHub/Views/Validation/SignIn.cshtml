@@ -1,0 +1,43 @@
+﻿<link rel="stylesheet" href="~/css/socialMedia.css" />
+
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1011233316074653',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v10.0'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="login_wrapper text-center">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a href="#" class="btn btn-primary facebook"> <span>Login with Facebook</span> <i class="fa fa-facebook"></i> </a> </div>
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a href="#" class="btn btn-primary google-plus"> Login with Google <i class="fa fa-google-plus"></i> </a> </div>
+    </div>
+    <h2>or</h2>
+    <div class="formsix-pos">
+        <div class="form-group i-email"> <input type="email" class="form-control" required="" id="email2" placeholder="Email Address *"> </div>
+    </div>
+    <div class="formsix-e">
+        <div class="form-group i-password"> <input type="password" class="form-control" required="" id="password2" placeholder="Password *"> </div>
+    </div>
+    <div class="login_btn_wrapper"> <a href="#" class="btn btn-primary login_btn"> Login </a> </div>
+    <div class="login_message">
+        <p>Don’t have an account ? <a href="#"> Sign up </a> </p>
+    </div>
+</div> 
+
+
+
+

@@ -35,7 +35,7 @@ namespace CvHub
                     .AddCookie(options =>
                     {
                         //Användaren skickas hit om åtkomsten nekas.
-                        options.LoginPath = "/User/SignIn";
+                        options.LoginPath = "/Validation/SignIn";
                     })
                     .AddFacebook(options =>
                     {

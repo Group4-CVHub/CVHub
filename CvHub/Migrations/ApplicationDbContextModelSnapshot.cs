@@ -87,9 +87,12 @@ namespace CvHub.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ValidationToken")
+                        .HasColumnType("int");
+
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CVHub.Models.Cv", b =>
