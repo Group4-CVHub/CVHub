@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,19 @@ namespace CvHub.Controllers
         public IActionResult SignIn()
         {
             return View();
+        }
+        [AllowAnonymous]
+        public int CheckLoginStatus()
+        {
+            var request = HttpContext.Request.Cookies;
+            if (request == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         [AllowAnonymous]
@@ -59,15 +73,15 @@ namespace CvHub.Controllers
             //additional magic... Detta tar Http svaret och delar upp svarets olika delar och skjuter in dem i listan results.
             var results = result.Principal.Identities.FirstOrDefault().Claims.ToList();
 
-            if (ValidateUser(results) == 1)
+            if (ValidateUser(results) == 1 && result.Succeeded)
             {
-                return Accepted();
+                return View("Home/Index", result);
             }
             else
             {
                 var properties = new AuthenticationProperties();
                 properties.ExpiresUtc = System.DateTime.UtcNow;
-                return BadRequest();
+                return View("Home/Index", result);
             }
         }
 
@@ -77,7 +91,7 @@ namespace CvHub.Controllers
 
             //Här letade jag upp rätt element med hjälp av ElementAt och sedan gjorde jag om det till en sträng.
             //Sedan tar jag bort tecken i början av strängen så bara det unika FacebookID finns kvar som man sedan kan använda för att söka i databasen.
-            user.FacebookId = int.Parse(results.ElementAt(0).ToString().Remove(0, 70));
+            user.FacebookId = results.ElementAt(0).ToString().Remove(0, 70);
 
 
             var DbObject = _db.Users

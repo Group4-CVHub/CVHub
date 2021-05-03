@@ -20,7 +20,7 @@ namespace CvHub.Models
         public string LastName { get; set; }
         [Phone]
         public string PhoneNumber { get; set; }
-        public int FacebookId { get; set; }
+        public string FacebookId { get; set; }
         public int ValidationToken { get; set; }
         public ICollection<Cv> Cvs { get; set; }
     }
