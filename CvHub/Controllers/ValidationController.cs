@@ -34,7 +34,7 @@ namespace CvHub.Controllers
             //Skapar ett objekt med authentication properties och sätter redirectURL till facebook validerings sidan.
             var properties = new AuthenticationProperties
             {
-                RedirectUri = Url.Action("FacebookValidation")
+                RedirectUri = Url.Action("Validation")
             };
 
             //Magic happens... Metoden matchar properties objektet med Facebooks standard authentication Scheme om det inte matchar skickas användaren vidare till 
@@ -42,17 +42,26 @@ namespace CvHub.Controllers
             return Challenge(properties, FacebookDefaults.AuthenticationScheme);
         }
 
-        public async Task<IActionResult> FacebookValidation()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(FacebookDefaults.AuthenticationScheme);
+            return Redirect("/Home/Index");
+        }
+
+        public async Task<IActionResult> Validation()
         {
             //Detta är Http svaret från facebook som är lagrat som Cookies i webbläsaren. 
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             //additional magic... Detta tar Http svaret och delar upp svarets olika delar och skjuter in dem i listan results.
             var results = result.Principal.Identities.FirstOrDefault().Claims.ToList();
-            
+
             if (ValidateUser(results) == 1)
             {
-                return View("SignIn", ValidateUser(results));
+                return Accepted();
             }
             else
             {
@@ -67,13 +76,12 @@ namespace CvHub.Controllers
             User user = new User();
 
             //Här letade jag upp rätt element med hjälp av ElementAt och sedan gjorde jag om det till en sträng.
-            //Sedan tar jag bort täcken i början av strängen så bara för och efternamn finns kvar som man sedan kan använda för att söka i databasen.
-            //Till sist så görs alla karraktärer till små bokstäver för att generallisera resultet. 
-            user.FirstName = results.ElementAt(3).ToString().Remove(0, 65).ToLower();
-            user.LastName = results.ElementAt(4).ToString().Remove(0, 63).ToLower();
+            //Sedan tar jag bort tecken i början av strängen så bara det unika FacebookID finns kvar som man sedan kan använda för att söka i databasen.
+            user.FacebookId = int.Parse(results.ElementAt(0).ToString().Remove(0, 70));
+
 
             var DbObject = _db.Users
-                            .Where(u => u.FirstName.ToLower() == user.FirstName && u.LastName.ToLower() == user.LastName)
+                            .Where(u => u.FacebookId == user.FacebookId)
                             .FirstOrDefault<User>();
 
             if (DbObject == null)
