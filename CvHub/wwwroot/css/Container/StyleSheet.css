@@ -1,0 +1,19 @@
+﻿.col-sm-2 {
+   color: #0f4c75;
+}
+h1 {
+    color: #0f4c75;
+}
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.H {
+    position: fixed;
+    left: 50%;
+    bottom: 10%
+}
+
+
+
+ 
