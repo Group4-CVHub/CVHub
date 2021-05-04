@@ -1,6 +1,5 @@
 ﻿
 using CvHub.Configuration;
-using CvHub.Models;
 using CVHub.Configurations;
 using CVHub.Models;
 using Microsoft.EntityFrameworkCore;

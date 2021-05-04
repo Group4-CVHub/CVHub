@@ -28,10 +28,9 @@ namespace CvHub
         {
             // Denna service gör så att man kan kräva inloggning på vissa delar av hemsidan genom att kalla på [Authorize].
             services.AddAuthentication(options =>
-                    {
-                        //Detta gör så att inställningarna ställs in efter CookieAuthentications standardinställningar
-                        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    })
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
                     .AddCookie(options =>
                     {
                         //Användaren skickas hit om åtkomsten nekas.

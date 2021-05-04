@@ -1,4 +1,4 @@
-﻿using CvHub.Models;
+﻿using CVHub.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

@@ -1,5 +1,5 @@
-﻿using CvHub.Models;
-using CVHub.Data;
+﻿using CVHub.Data;
+using CVHub.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace CvHub.Controllers
+namespace CVHub.Controllers
 {
     [Authorize]
     public class ValidationController : Controller
@@ -28,19 +28,6 @@ namespace CvHub.Controllers
         {
             return View();
         }
-        [AllowAnonymous]
-        public int CheckLoginStatus()
-        {
-            var request = HttpContext.Request.Cookies;
-            if (request == null)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
 
         [AllowAnonymous]
         public IActionResult FacebookSignIn()
@@ -48,7 +35,7 @@ namespace CvHub.Controllers
             //Skapar ett objekt med authentication properties och sätter redirectURL till facebook validerings sidan.
             var properties = new AuthenticationProperties
             {
-                RedirectUri = Url.Action("Validation")
+                RedirectUri = Url.Action("FacebookAuthentication")
             };
 
             //Magic happens... Metoden matchar properties objektet med Facebooks standard authentication Scheme om det inte matchar skickas användaren vidare till 
@@ -56,64 +43,72 @@ namespace CvHub.Controllers
             return Challenge(properties, FacebookDefaults.AuthenticationScheme);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FacebookAuthentication()
+        {
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            if(result.Succeeded)
+            {
+                var facebookID = result.Principal.Identities.FirstOrDefault().Claims.ElementAt(0).Value.ToString();
+                var email = result.Principal.Identities.FirstOrDefault().Claims.ElementAt(1).Value.ToString();
+                var fName = result.Principal.Identities.FirstOrDefault().Claims.ElementAt(3).Value.ToString();
+                var lName = result.Principal.Identities.FirstOrDefault().Claims.ElementAt(4).Value.ToString();
+
+                User user = new User { FacebookId = facebookID, Email = email, FirstName = fName, LastName = lName };
+
+                var DbUser = _db.Users.Where(u => u.FacebookId == user.FacebookId).FirstOrDefault();
+
+                if(DbUser != null)
+                {
+                    return RedirectToAction("SuccesfullLogIn", DbUser);
+                }
+                else 
+                {
+                    await LogOut();
+                    return Redirect("/User/Register");
+                }
+            }
+            else
+            {
+                return Redirect("/User/Register");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult DbAuthenticate(User user)
+        {
+            var DbUser = _db.Users.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
+
+            if (DbUser != null)
+            {
+                var serverClaims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Email, $"{DbUser.Email}"),
+                    new Claim(ClaimTypes.GivenName, $"{DbUser.FirstName} {DbUser.LastName}")
+                };
+
+                var claimIdentity = new ClaimsIdentity(serverClaims, "serverClaim");
+                var userPrincipal = new ClaimsPrincipal(claimIdentity);
+
+                HttpContext.SignInAsync(userPrincipal);
+                return View("SuccessfullLogIn", DbUser);
+            }
+            else
+            {
+                return Redirect("/User/Register");
+            }
+        }
+
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            await HttpContext.SignOutAsync(FacebookDefaults.AuthenticationScheme);
             return Redirect("/Home/Index");
         }
 
-        public async Task<IActionResult> Validation()
+        public IActionResult SuccessfullLogIn()
         {
-            //Detta är Http svaret från facebook som är lagrat som Cookies i webbläsaren. 
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            //additional magic... Detta tar Http svaret och delar upp svarets olika delar och skjuter in dem i listan results.
-            var results = result.Principal.Identities.FirstOrDefault().Claims.ToList();
-
-            if (ValidateUser(results) == 1 && result.Succeeded)
-            {
-                return View("Home/Index", result);
-            }
-            else
-            {
-                var properties = new AuthenticationProperties();
-                properties.ExpiresUtc = System.DateTime.UtcNow;
-                return View("Home/Index", result);
-            }
-        }
-
-        private int ValidateUser(List<Claim> results)
-        {
-            User user = new User();
-
-            //Här letade jag upp rätt element med hjälp av ElementAt och sedan gjorde jag om det till en sträng.
-            //Sedan tar jag bort tecken i början av strängen så bara det unika FacebookID finns kvar som man sedan kan använda för att söka i databasen.
-            user.FacebookId = results.ElementAt(0).ToString().Remove(0, 70);
-
-
-            var DbObject = _db.Users
-                            .Where(u => u.FacebookId == user.FacebookId)
-                            .FirstOrDefault<User>();
-
-            if (DbObject == null)
-            {
-                return 0;
-            }
-            else
-            {
-                if (DbObject.ValidationToken == 0)
-                {
-                    DbObject.ValidationToken = 1;
-                    return 1;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return View();
         }
     }
 }

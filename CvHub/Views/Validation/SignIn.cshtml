@@ -1,21 +1,31 @@
-﻿<link rel="stylesheet" href="~/css/socialMedia.css" />
+﻿@model CVHub.Models.User
 
- 
-<div class="login_wrapper text-center">
+<link rel="stylesheet" href="~/css/socialMedia.css" />
+
+<div class="container">
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a asp-controller="Validation" asp-action="FacebookSignIn" class="btn btn-primary facebook"> <span>Login with Facebook</span> <i class="fa fa-facebook"></i> </a> </div>
-        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a href="#" class="btn btn-primary google-plus"> Login with Google <i class="fa fa-google-plus"></i> </a> </div>
-    </div>
-    <h2>or</h2>
-    <div class="formsix-pos">
-        <div class="form-group i-email"> <input type="email" class="form-control" required="" id="email2" placeholder="Email Address *"> </div>
-    </div>
-    <div class="formsix-e">
-        <div class="form-group i-password"> <input type="password" class="form-control" required="" id="password2" placeholder="Password *"> </div>
-    </div>
-    <div class="login_btn_wrapper"> <a href="#" class="btn btn-primary login_btn"> Login </a> </div>
-    <div class="login_message">
-        <p>Don’t have an account ? <a href="#"> Sign up </a> </p>
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    <form method="post" asp-action="DbAuthenticate" class="form-signin">
+                        <div class="form-label-group">
+                            <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            <label for="inputEmail">Email address</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <label for="inputPassword">Password</label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                        <a asp-controller="User" asp-action="Register" class="btn btn-lg btn-success btn-block text-uppercase">Register</a>
+                        <hr class="my-4">
+                        <a asp-action="GoogleSignIn" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</a>
+                        <a asp-action="FacebookSignIn" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

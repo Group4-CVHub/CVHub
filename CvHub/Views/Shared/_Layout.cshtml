@@ -1,6 +1,4 @@
-﻿@model CvHub.Controllers.ValidationController
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,14 +25,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><h6 class="tab">Templates</h6></a>
                         </li>
                         <li class="nav-item">
-                            @*@if (@Model.CheckLoginStatus() == 1)
-                            {*@
-                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Validation" asp-action="SignOut"><h6 class="tab">Sign out</h6></a>
-                                @*//}
-                                //else
-                                //{*@
-                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Validation" asp-action="SignIn"><h6 class="tab">Sign in</h6></a>
-                            @*}*@
+                        <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Validation" asp-action="LogOut"><h6 class="tab">Sign out</h6></a>
+                        <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Validation" asp-action="SignIn"><h6 class="tab">Sign in</h6></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark tab" asp-area="" asp-controller="Home" asp-action="Index"><h6 class="tab">Home</h6></a>

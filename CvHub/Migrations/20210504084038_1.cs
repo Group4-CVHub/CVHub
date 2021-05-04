@@ -30,6 +30,7 @@ namespace CvHub.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FacebookId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ValidationToken = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

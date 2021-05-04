@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace CvHub.Models
+namespace CVHub.Models
 {
     public class User
     {
@@ -21,7 +21,7 @@ namespace CvHub.Models
         [Phone]
         public string PhoneNumber { get; set; }
         public string FacebookId { get; set; }
-        public int ValidationToken { get; set; }
+        public string GoogleId { get; set; }
         public ICollection<Cv> Cvs { get; set; }
     }
 }

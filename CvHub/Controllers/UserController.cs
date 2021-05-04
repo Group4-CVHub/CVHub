@@ -21,6 +21,11 @@ namespace CvHub.Controllers
         {
             _db = db;
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }
 
