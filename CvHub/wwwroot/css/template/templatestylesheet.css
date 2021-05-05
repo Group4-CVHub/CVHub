@@ -1,0 +1,119 @@
+﻿
+/*general*/
+div.wholeCv {
+    word-wrap: break-word; /*prevents overflow of text in divs*/
+}
+
+h1, h2{
+    color:#98c1d9; /*lightblue*/
+}
+
+
+h4, strong {
+    color: #125e8a; /*darkblue*/
+}
+
+p {
+   
+    color: #565254; /*darkgrey*/
+}
+
+.padding{
+    padding:2%;
+}
+
+hr{
+   color: #98c1d9;
+}
+
+.flaticon, a.flaticon, a.flaticon:hover{
+    color: #fff;
+}
+
+/*----------------------------------*/
+
+
+/*button group*/
+
+.btn-group-vertical{
+    position:fixed;
+    text-align:right;
+    margin-left: 40%;
+    margin-right: auto;
+}
+
+.btn{
+    background-color: #98c1d9; /*lightblue*/
+    color:#fff;    
+}
+
+    .btn:hover{
+        background-color: #125e8a; /*darkblue*/
+        color:#e7ebef; /*lightgrey*/
+    }
+    /*Top container*/
+    .header {
+        margin: 2% 0%;
+        padding: 10% 5% 5% 10%;
+    }
+
+
+.profilePicUrl{
+    max-height: 100%;
+    max-width:100%;
+    border-radius: 25%;
+}
+
+#profilePic {
+    margin: 2% 0;
+    justify-content: center;
+    padding: 1px;
+}
+
+#name {
+    margin: 2% 0;
+    padding: 10% 0 5% 10%;
+}
+/*----------------------------------*/
+
+
+
+
+
+/*About me container*/
+#aboutMe {
+    margin: 2% 0%;
+    padding: 0 5% 2% 10%;
+}
+
+/*----------------------------------*/
+
+
+
+
+
+/*Experience container*/
+#experience {
+    text-align:left;
+    
+}
+
+#experiencePic {
+    max-width: 150px;
+    margin:auto;
+}
+
+.experienceText {
+    padding: 5% 5% 5% 10%;
+}
+
+
+/*----------------------------------*/
+
+#contactMe {
+    padding: 2% 5% 5% 10%;
+ 
+    text-align:center;
+    
+}
+

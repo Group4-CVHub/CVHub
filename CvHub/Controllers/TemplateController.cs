@@ -12,5 +12,10 @@ namespace CvHub.Controllers
         {
             return View();
         }
+
+        public IActionResult Cv()
+        {
+            return View();
+        }
     }
 }
