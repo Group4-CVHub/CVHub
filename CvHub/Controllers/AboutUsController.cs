@@ -9,7 +9,7 @@ namespace CvHub.Controllers
     public class AboutUsController : Controller
     {
         [Route("AboutUs")]
-        [Route("AboutUs/Indext")]
+        [Route("Home/AboutUs/Indext")]
         [Route("AboutUs/Indext/{id?}")]
         public IActionResult Index()
         {
