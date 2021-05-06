@@ -1,112 +1,122 @@
 ﻿
 
-<head>
+
 
     <meta name="keywords" content="About Us, CV, Job Application, Help with CV, CVHub">
 
     <link rel="stylesheet" href="~/css/template/templatestylesheet.css" />
 
-</head>
-<div class="wholeCv container padding">
-    <div class="row header">
-        <div id="profilePic" class=" col-4 col-lg-4 col-md-4 col-sm-4">
-            <img class="profilePicUrl" src="https://i.redd.it/x1zm1cfzm3x51.jpg" alt="profile picture" />
-        </div>
-        <div id="name" class="col col-lg-8 col-md-8 col-sm-8">
-            <h1> Firstname Lastname</h1>
-            <h4>title</h4>
-            <div class="btn-group-vertical float">
-                <a class="btn" href="#aboutMe" role="button">About me</a>
-                <a class="btn" href="#education" role="button">Education</a>
-                <a class="btn" href="#work" role="button">Work</a>
-                <a class="btn" href="#contactMe" role="button">Contact</a>
-                <a class="btn" href="https://www.linkedin.com/" target="_blank" role="button">LinkedIn</a>
-                
-            </div>
-        </div>
-    </div>
-    
-    <div id="aboutMe" class="row padding">
-        <h2> About me </h2>
-        <p>
-            <!-- start slipsum code -->
-            The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men.
-            Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness,
-            for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with
-            great vengeance and furious anger those who would attempt to poison and destroy My brothers.
-            And you will know My name is the Lord when I lay My vengeance upon thee.
-            <!-- end slipsum code -->
-        </p>
-    </div>
 
-    <hr style="width:85%; border-width:5px;margin: 5% auto 5% auto; ">
-
-
-    <div id="experience" class="container">
-
-        <div class="row" style="margin-top: 5%;">
-
-            <div id="experiencePic" class="padding col-4 col-lg-4 col-md-4 col-sm-4">
-                <img src="~/css/template/img/booksdark.svg" alt="education" />
-            </div>
-            <div id="education" class="experienceText col col-lg-8 col-md-8 col-sm-8">
-                <h2>Education</h2>
-
-                <strong>workplace</strong>
-                <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
-
-                <strong>workplace</strong>
-                <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
-
-                <strong>workplace</strong>
-                <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
-            </div>
-
-        </div>
-
-        <hr style="width:50%; margin: 5% auto 5% auto; ">
-
-
-        <div class="row" style="margin-top: 5%;">
-
-            <div id="experiencePic" class="padding col col-lg-4 col-md-4 col-sm-4">
-                <img src="~/css/template/img/workdark.svg" alt="education" />
-            </div>
-            <div id="work" class="experienceText col col-lg-8 col-md-8 col-sm-8">
-                <h2>Work</h2>
-
-                <strong>workplace</strong>
-                <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
-
-                <strong>workplace</strong>
-                <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
-
-                <strong>workplace</strong>
-                <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
-            </div>
-
-        </div>
-
-    </div>
-
-    <hr style="width:85%; border-width:5px;margin: 5% auto 5% auto; ">
-
-    <div id="contactMe" class="container">
-
-
+    <div class="wholeCv container padding">
         <div class="row">
-            <div class="col">
-                <img src="~/css/template/img/mail.svg" alt="mail" style="max-height: 100px; max-width: 100px; margin-bottom: 10%;" />
-                <p id="email">email@address.com</p>
+            <a class="btn btn-primary btn-lg" asp-controller="Template" asp-action="TemplateForm" style="text-align:center; margin:auto;">Choose this template</a><br>
+        </div>
+
+
+        <div class="row header">
+
+            <div id="profilePic" class=" col-4 col-lg-4 col-md-4 col-sm-4">
+                <img class="profilePicUrl" src="https://i.redd.it/x1zm1cfzm3x51.jpg" alt="profile picture" />
             </div>
-            <div class="col">
-                <img src="~/css/template/img/phone.svg" alt="phone" style="max-height:100px; max-width: 100px; margin-bottom:10%;" />
-                <p id="phonenumber">0700000000</p>
+            <div id="name" class="col col-lg-8 col-md-8 col-sm-8">
+                <h1> Firstname Lastname</h1>
+                <h4>title</h4>
+                <div class="btn-group-vertical float">
+                    <a class="btn" href="#aboutMe" role="button">About me</a>
+                    <a class="btn" href="#education" role="button">Education</a>
+                    <a class="btn" href="#work" role="button">Work</a>
+                    <a class="btn" href="#contactMe" role="button">Contact</a>
+                    <a class="btn" href="https://www.linkedin.com/" target="_blank" role="button">LinkedIn</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="aboutMe" class="row padding">
+            <h2> About me </h2>
+            <p>
+                <!-- start slipsum code -->
+                The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men.
+                Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness,
+                for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with
+                great vengeance and furious anger those who would attempt to poison and destroy My brothers.
+                And you will know My name is the Lord when I lay My vengeance upon thee.
+                <!-- end slipsum code -->
+            </p>
+        </div>
+
+        <hr style="width:85%; border-width:5px;margin: 5% auto 5% auto; ">
+
+
+        <div id="experience" class="container">
+
+            <div class="row" style="margin-top: 5%;">
+
+                <div id="experiencePic" class="padding col-4 col-lg-4 col-md-4 col-sm-4">
+                    <img src="~/css/template/img/booksdark.svg" alt="education" />
+                </div>
+                <div id="education" class="experienceText col col-lg-8 col-md-8 col-sm-8">
+                    <h2>Education</h2>
+
+                    <strong>School</strong>
+                    <p>dd/mm/yy ------> Degree</p>
+
+                    <strong>School</strong>
+                    <p>dd/mm/yy ------> Degree</p>
+
+                    <strong>School</strong>
+                    <p>dd/mm/yy ------> Degree</p>
+                </div>
+
+            </div>
+
+            <hr style="width:50%; margin: 5% auto 5% auto; ">
+
+
+            <div class="row" style="margin-top: 5%;">
+
+                <div id="experiencePic" class="padding col col-lg-4 col-md-4 col-sm-4">
+                    <img src="~/css/template/img/workdark.svg" alt="education" />
+                </div>
+                <div id="work" class="experienceText col col-lg-8 col-md-8 col-sm-8">
+                    <h2>Work</h2>
+
+                    <strong>workplace</strong>
+                    <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
+
+                    <strong>workplace</strong>
+                    <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
+
+                    <strong>workplace</strong>
+                    <p>dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia</p>
+                </div>
+
             </div>
 
         </div>
+
+        <hr style="width:85%; border-width:5px;margin: 5% auto 5% auto; ">
+
+        <div id="contactMe" class="container">
+
+
+            <div class="row">
+                <div class="col">
+                    <img src="~/css/template/img/mail.svg" alt="mail" style="max-height: 100px; max-width: 100px; margin-bottom: 10%;" />
+                    <p id="email">email@address.com</p>
+                </div>
+                <div class="col">
+                    <img src="~/css/template/img/phone.svg" alt="phone" style="max-height:100px; max-width: 100px; margin-bottom:10%;" />
+                    <p id="phonenumber">0700000000</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <a class="btn btn-primary btn-lg" asp-controller="Template" asp-action="TemplateForm" style="text-align:center; margin:auto;">Choose this template</a>
+        </div>
     </div>
-</div>
 
 @section Scripts{
     @{

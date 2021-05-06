@@ -17,5 +17,11 @@ namespace CvHub.Controllers
         {
             return View();
         }
+
+        public IActionResult TemplateForm()
+        {
+            return View();
+        }
+      
     }
 }

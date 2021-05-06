@@ -1,0 +1,35 @@
+﻿<meta name="keywords" content="About Us, CV, Job Application, Help with CV, CVHub">
+<link rel="stylesheet" href="~/css/template/index.css" />
+
+<div class="container">
+
+
+    <h3>Choose a template</h3>
+
+    <div class="row" style="margin:5% auto 0 auto;">
+        <div class="col">
+            <img class="comingsoon" src="~/css/template/img/comingsoon.svg" style="width:70%" title="Elegant" alt="Elegant" />
+        </div>
+        <div class="col">
+            <img src="~/css/template/img/cvimg.svg" style="width:70%" title="Minimalist" alt="Minimalist" />
+        </div>
+
+    </div>
+
+    <div class="row" style="margin:3% auto 0 auto;">
+        <div class="col">
+            <h5 style="margin-top:5%">Coming soon!</h5>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" asp-controller="Template" asp-action="Cv" >View</a> @*Should oper the page Cv.cshtml*@
+        
+        </div>
+    </div>
+
+
+</div>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
