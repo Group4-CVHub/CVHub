@@ -1,31 +1,44 @@
 ﻿@model CVHub.Models.User
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="~/css/Register.css" />
-
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Register.css" />
+</head>
 
 <div class="registration-form">
-    <form>
+    <form method="post" asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-icon">
             <span><i class="icon icon-user"></i></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="firstname" placeholder="First Name">
+            <input asp-for="FirstName" type="text" class="form-control item" id="firstname" placeholder="First Name">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="lastname" placeholder="Last Name">
+            <input asp-for="LastName" type="text" class="form-control item" id="lastname" placeholder="Last Name">
+            <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="email" placeholder="Email">
+            <input asp-for="Email" type="text" class="form-control item" id="email" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number">
+            <input asp-for="PhoneNumber" type="text" class="form-control item" id="phone-number" placeholder="Phone Number">
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Password">
+            <input asp-for="Password" type="password" class="form-control item" id="password" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-block create-account">Create Account</button>
+            <input type="submit" class="btn btn-block create-account" value="Create Account">
         </div>
     </form>
 </div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

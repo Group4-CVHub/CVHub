@@ -15,6 +15,8 @@ namespace CvHub.Configuration
             modelBuilder.HasKey(u => u.UserId);
             modelBuilder.Property(u => u.UserId)
                         .ValueGeneratedOnAdd();
+            modelBuilder.HasIndex(u => u.Email)
+                        .IsUnique();
             modelBuilder.HasMany(u => u.Cvs)
                         .WithOne(c => c.User);
         }

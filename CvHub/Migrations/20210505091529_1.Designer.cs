@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CvHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210504084038_1")]
+    [Migration("20210505091529_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,7 @@ namespace CvHub.Migrations
                     b.ToTable("Templates");
                 });
 
-            modelBuilder.Entity("CvHub.Models.User", b =>
+            modelBuilder.Entity("CVHub.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -81,6 +81,9 @@ namespace CvHub.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GoogleId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -91,9 +94,6 @@ namespace CvHub.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ValidationToken")
-                        .HasColumnType("int");
 
                     b.HasKey("UserId");
 
@@ -108,7 +108,7 @@ namespace CvHub.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvHub.Models.User", "User")
+                    b.HasOne("CVHub.Models.User", "User")
                         .WithMany("Cvs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -124,7 +124,7 @@ namespace CvHub.Migrations
                     b.Navigation("Cvs");
                 });
 
-            modelBuilder.Entity("CvHub.Models.User", b =>
+            modelBuilder.Entity("CVHub.Models.User", b =>
                 {
                     b.Navigation("Cvs");
                 });

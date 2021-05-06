@@ -31,7 +31,7 @@ namespace CvHub.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FacebookId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ValidationToken = table.Column<int>(type: "int", nullable: false)
+                    GoogleId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

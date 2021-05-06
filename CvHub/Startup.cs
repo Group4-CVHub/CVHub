@@ -1,4 +1,5 @@
 using CVHub.Data;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,7 +42,14 @@ namespace CvHub
                         //De här inställningar kopplar ihop denna appen med min app som är skapad på developers.facebook.com
                         options.AppId = "1011233316074653";
                         options.AppSecret = "fe447e4272d66875b000a9542fdf6aed";
+                    })
+                    .AddGoogle(options =>
+                    {
+                        //De här inställningar kopplar ihop denna appen med min app som är skapad på console.cloud.google.com
+                        options.ClientId = "971180760685-1vb3tpujq1uj86qqk2j1e5dr5s55vn1c.apps.googleusercontent.com";
+                        options.ClientSecret = "IOnpecEw7Vvria3kY0gVQQaB";
                     });
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
