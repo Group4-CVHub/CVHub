@@ -93,30 +93,31 @@ namespace CVHub.Controllers
             }
         }
 
-        [AllowAnonymous, Route("signin-google")]
-        public IActionResult GoogleSignIn()
-        {
-            //Skapar ett objekt med authentication properties och sätter redirectURL till Google validerings sidan.
-            var properties = new AuthenticationProperties
-            {
-                RedirectUri = Url.Action("GoogleAuthentication"),
-            };
+        //Google-inlogg, fick det inte att fungera, sparar koden ifall man vill fortsätta. 
+        //[AllowAnonymous]
+        //public IActionResult GoogleSignIn()
+        //{
+        //    //Skapar ett objekt med authentication properties och sätter redirectURL till Google validerings sidan.
+        //    var properties = new AuthenticationProperties
+        //    {
+        //        RedirectUri = Url.Action("GoogleAuthentication")
+        //    };
 
-            //Magic happens... Metoden matchar properties objektet med Googles standard authentication Scheme om det inte matchar skickas användaren vidare till 
-            //inloggning på Google via Googles API. Svaret skickas sedan in i "GoogleAuthentication" som är satt som redirectURL i properties.
-            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
-        }
+        //    //Magic happens... Metoden matchar properties objektet med Googles standard authentication Scheme om det inte matchar skickas användaren vidare till 
+        //    //inloggning på Google via Googles API. Svaret skickas sedan in i "GoogleAuthentication" som är satt som redirectURL i properties.
+        //    return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        //}
 
-        public async Task<IActionResult> GoogleAuthentication()
-        {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //public async Task<IActionResult> GoogleAuthentication()
+        //{
+        //    var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var results = result.Principal.Identities.FirstOrDefault().Claims.Select(claim => new
-            {
-                claim.Value
-            });
+        //    var results = result.Principal.Identities.FirstOrDefault().Claims.Select(claim => new
+        //    {
+        //        claim.Value
+        //    });
 
-            return Json(results);
+        //    return Json(results);
 
             //if (result.Succeeded)
             //{
@@ -160,7 +161,7 @@ namespace CVHub.Controllers
             //{
             //    return Redirect("/User/Register");
             //}
-        }
+        //}
 
         [AllowAnonymous]
         [HttpPost, ValidateAntiForgeryToken]

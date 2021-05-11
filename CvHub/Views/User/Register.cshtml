@@ -1,15 +1,14 @@
 ﻿@model CVHub.Models.User
 
 <head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/Register.css" />
 </head>
 
 <div class="registration-form">
     <form method="post" asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-icon">
-            <span><i class="icon icon-user"></i></span>
+        <div class="text-center mb-5">
+            <span><img src="~/Pic/Favicon.png" alt="CV" class="w-auto h-auto"></span>
         </div>
         <div class="form-group">
             <input asp-for="FirstName" type="text" class="form-control item" id="firstname" placeholder="First Name">
@@ -19,6 +18,10 @@
             <input asp-for="LastName" type="text" class="form-control item" id="lastname" placeholder="Last Name">
             <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
+        @if (Model != null)
+        {
+            <div class="text-center text-danger">@Model.Email is already taken!</div>
+        }
         <div class="form-group">
             <input asp-for="Email" type="text" class="form-control item" id="email" placeholder="Email">
             <span asp-validation-for="Email" class="text-danger"></span>

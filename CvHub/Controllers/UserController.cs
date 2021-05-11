@@ -38,21 +38,28 @@ namespace CvHub.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Users.Add(obj);
-                _db.SaveChanges();
+                try
+                {
+                    _db.Users.Add(obj);
+                    _db.SaveChanges();
 
-                var serverClaims = new List<Claim>()
+                    var serverClaims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Email, $"{obj.Email}"),
                     new Claim(ClaimTypes.GivenName, $"{obj.FirstName} {obj.LastName}")
                 };
 
-                var claimIdentity = new ClaimsIdentity(serverClaims, "serverClaim");
-                var userPrincipal = new ClaimsPrincipal(claimIdentity);
+                    var claimIdentity = new ClaimsIdentity(serverClaims, "serverClaim");
+                    var userPrincipal = new ClaimsPrincipal(claimIdentity);
 
-                HttpContext.SignInAsync(userPrincipal);
+                    HttpContext.SignInAsync(userPrincipal);
 
-                return RedirectToAction("MyPages");
+                    return RedirectToAction("MyPages");
+                }
+                catch
+                {
+                    return View("Register", obj);
+                }
             }
             else
             {

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CvHub
@@ -42,14 +43,16 @@ namespace CvHub
                         //De här inställningar kopplar ihop denna appen med min app som är skapad på developers.facebook.com
                         options.AppId = "1011233316074653";
                         options.AppSecret = "fe447e4272d66875b000a9542fdf6aed";
-                    })
-                    .AddGoogle(options =>
-                    {
-                        //De här inställningar kopplar ihop denna appen med min app som är skapad på console.cloud.google.com
-                        options.ClientId = "971180760685-1vb3tpujq1uj86qqk2j1e5dr5s55vn1c.apps.googleusercontent.com";
-                        options.ClientSecret = "IOnpecEw7Vvria3kY0gVQQaB";
                     });
-
+                    //
+                    //.AddGoogle(options =>
+                    //{
+                    //    //De här inställningar kopplar ihop denna appen med min app som är skapad på console.cloud.google.com
+                    //    options.ClientId = "971180760685-1vb3tpujq1uj86qqk2j1e5dr5s55vn1c.apps.googleusercontent.com";
+                    //    options.ClientSecret = "IOnpecEw7Vvria3kY0gVQQaB";
+                    //    options.CallbackPath = "/Validation/GoogleSignIn";
+                    //    options.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
+                    //});
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
