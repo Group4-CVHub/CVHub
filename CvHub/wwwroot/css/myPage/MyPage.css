@@ -1,0 +1,22 @@
+﻿body {
+    background: white;
+}
+
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8;
+}
+
+
+.labels {
+    font-size: 11px;
+}
+
+.profile-form {
+    margin-bottom: 3%;
+}
+
+#photo {
+    margin-top: 5%;
+}

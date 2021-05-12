@@ -1,0 +1,19 @@
+﻿h3{
+    color: #98c1d9;
+    text-align:left;
+    padding-top:3%;
+}
+
+h5{
+    color:#c2c2c2;
+}
+.comingsoon {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+.templates{
+    text-align:center !important;
+}
+
+
+
