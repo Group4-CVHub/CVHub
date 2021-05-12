@@ -8,12 +8,61 @@ a:hover {
     background-color: #ddd;
     color: black;
 }
-.H {
+
+
+.btn-group-vertical {
     position: fixed;
-    left: 50%;
-    bottom: 10%
+    text-align: right;
+     right: 50%;
+    bottom: 10%;
+}
+
+.btn {
+    background-color: #98c1d9;
+    color:#fff;
+    background-position:bottom;
+}
+
+    .btn:hover {
+        background-color: #125e8a;
+        color:#e7ebef;
+        
+    }
+.img-circle {
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+}
+.row {
+    top: 35%;
+    left: 25%;
+    margin-bottom: 15%;
+}
+.textbox{
+    margin-right:8%;
+}
+
+em.aboutme {
+    font-size: smaller;
+    margin-top: 10%;
+}
+
+.us.col-lg-2{
+
+    width:20%;
+}
+.us {
+    text-align: center;
+    margin: 0 2% 0 0;
+}
+h3.name{
+    margin-top: 8%;
+}
+
+.col-sm-12.img-circle{
+    margin-top: 50%;
 }
 
 
 
- 
