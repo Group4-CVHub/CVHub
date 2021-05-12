@@ -36,8 +36,33 @@ a:hover {
 }
 .row {
     top: 35%;
-    width: 12%;
     left: 25%;
     margin-bottom: 15%;
 }
+.textbox{
+    margin-right:8%;
+}
+
+em.aboutme {
+    font-size: smaller;
+    margin-top: 10%;
+}
+
+.us.col-lg-2{
+
+    width:20%;
+}
+.us {
+    text-align: center;
+    margin: 0 2% 0 0;
+}
+h3.name{
+    margin-top: 8%;
+}
+
+.col-sm-12.img-circle{
+    margin-top: 50%;
+}
+
+
 
