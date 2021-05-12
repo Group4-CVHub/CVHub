@@ -1,7 +1,7 @@
 ﻿h3{
     color: #98c1d9;
     text-align:left;
-    padding-left: 9%;
+    padding-top:3%;
 }
 
 h5{
@@ -11,7 +11,9 @@ h5{
     filter: blur(8px);
     -webkit-filter: blur(8px);
 }
-.container, .row{
-    text-align:center;
+.templates{
+    text-align:center !important;
 }
+
+
 
