@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace CvHub.Controllers
 {
-    public class UserController : Controller
+    public class AboutUsController : Controller
     {
+        [Route("AboutUs")]
+        [Route("AboutUs/Indext")]
+        [Route("AboutUs/Indext/{id?}")]
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult MyPage()
         {
             return View();
         }
