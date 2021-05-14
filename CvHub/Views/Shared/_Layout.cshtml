@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><h4 class="cvhub"><b>CvHub</b></h4></a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><h4 class="cvhub"><b>CVHub</b></h4></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,6 +29,9 @@
                             <a class="nav-link text-dark font-weight-bold" asp-controller="Validation" asp-action="SignIn"><h6 class="tab">Sign in</h6></a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark tab" asp-area="" asp-controller="User" asp-action="MyPage"><h6 class="tab">My Page</h6></a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark tab" asp-controller="Home" asp-action="Index"><h6 class="tab">Home</h6></a>
                         </li>
                     </ul>
@@ -44,7 +47,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container copyright">
-            &copy; 2021 - CvHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - CvHub - <a asp-area="" asp-controller="AboutUs" asp-action="AboutUs">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

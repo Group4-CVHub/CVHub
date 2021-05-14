@@ -66,7 +66,7 @@ namespace CvHub.Controllers
                 return Redirect("/Validation/Register");
             }
         }
-        public IActionResult MyPages()
+        public IActionResult MyPage()
         {
             if (HttpContext.User.Identities.FirstOrDefault().Claims.ElementAt(1).Type.ToString() == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
             {
