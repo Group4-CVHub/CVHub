@@ -72,13 +72,13 @@ namespace CVHub.Controllers
                 {
                     if (DbUser.FacebookId != null && DbUser.Email != null)
                     {
-                        return RedirectToAction("MyPages", "User");
+                        return RedirectToAction("MyPage", "User");
                     }
                     else if (DbUser.FacebookId == null && DbUser.Email != null)
                     {
                         DbUser.FacebookId = facebookID;
                         _db.SaveChanges();
-                        return RedirectToAction("MyPages", "User");
+                        return RedirectToAction("MyPage", "User");
                     }
                     else
                     {

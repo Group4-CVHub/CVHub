@@ -54,7 +54,7 @@ namespace CvHub.Controllers
 
                     HttpContext.SignInAsync(userPrincipal);
 
-                    return RedirectToAction("MyPages");
+                    return RedirectToAction("MyPage");
                 }
                 catch
                 {
