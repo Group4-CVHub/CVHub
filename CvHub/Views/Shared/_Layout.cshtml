@@ -4,8 +4,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CvHub</title>
-
+    <title>@ViewData["Title"] - CVHub</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -14,33 +13,35 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><h4 class="cvhub"><b>CvHub</b></h4></a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><h4 class="cvhub"><b>CVHub</b></h4></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1 flex-row-reverse">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Template" asp-action="index"><h6 class="tab">Templates</h6></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Home" asp-action="Privacy"><h6 class="tab">Sign in</h6></a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy"><h6 class="tab">Templates</h6></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark tab" asp-area="" asp-controller="Home" asp-action="Index"><h6 class="tab">Home</h6></a>
-
+                            <a class="nav-link text-dark font-weight-bold" asp-controller="Validation" asp-action="LogOut"><h6 class="tab">Sign out</h6></a>
+                            <a class="nav-link text-dark font-weight-bold" asp-controller="Validation" asp-action="SignIn"><h6 class="tab">Sign in</h6></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark tab" asp-area="" asp-controller="User" asp-action="MyPage"><h6 class="tab">My Page</h6></a>
-
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark tab" asp-controller="Home" asp-action="Index"><h6 class="tab">Home</h6></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="px-5 py-2">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -48,7 +49,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container copyright">
-            &copy; 2021 - CvHub - <a asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy  </a><a asp-area="" asp-controller="AboutUs" asp-action="AboutUs">  About us</a>
+            &copy; 2021 - CvHub - <a asp-area="" asp-controller="AboutUs" asp-action="AboutUs">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

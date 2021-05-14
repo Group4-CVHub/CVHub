@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CvHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210427124547_1")]
+    [Migration("20210505091529_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,7 @@ namespace CvHub.Migrations
                     b.ToTable("Templates");
                 });
 
-            modelBuilder.Entity("CvHub.Models.User", b =>
+            modelBuilder.Entity("CVHub.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -74,8 +74,14 @@ namespace CvHub.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FacebookId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GoogleId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -91,7 +97,7 @@ namespace CvHub.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CVHub.Models.Cv", b =>
@@ -102,7 +108,7 @@ namespace CvHub.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvHub.Models.User", "User")
+                    b.HasOne("CVHub.Models.User", "User")
                         .WithMany("Cvs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -118,7 +124,7 @@ namespace CvHub.Migrations
                     b.Navigation("Cvs");
                 });
 
-            modelBuilder.Entity("CvHub.Models.User", b =>
+            modelBuilder.Entity("CVHub.Models.User", b =>
                 {
                     b.Navigation("Cvs");
                 });
