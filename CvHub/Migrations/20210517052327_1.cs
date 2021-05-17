@@ -20,20 +20,24 @@ namespace CvHub.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: true),
+                    City = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: true),
+                    State = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: true),
+                    FacebookId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,9 +61,9 @@ namespace CvHub.Migrations
                         principalColumn: "TemplateId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Cvs_User_UserId",
+                        name: "FK_Cvs_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -73,6 +77,12 @@ namespace CvHub.Migrations
                 name: "IX_Cvs_UserId",
                 table: "Cvs",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -84,7 +94,7 @@ namespace CvHub.Migrations
                 name: "Templates");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }

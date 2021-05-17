@@ -1,6 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -9,28 +10,33 @@ a.navbar-brand {
 
 /* Changes title color */
 
-h4 {
-    color: #125e8a;
+h4.cvhub {
+    color: #125e8a; /*darkblue*/
+    
 }
 
 /* Changes tab color */
 h6.tab {
-    color: #0f4c75;
+    color: #125e8a; /*darkblue*/
 }
 
     h6.tab:hover {
-        color: #3282b8;
+        color: #98c1d9; /*lightblue*/
     }
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #cdcdcd;
+    color: #e7ebef; /*lightgrey*/
+}
+
+a:hover{
+    color: #c2c2c2; /*middlegrey*/
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #98c1d9; /*lightblue*/
+    border-color: #125e8a; /*darkblue*/
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -83,4 +89,8 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+body {
+    padding: 2em;
 }

@@ -61,35 +61,57 @@ namespace CvHub.Migrations
                     b.ToTable("Templates");
                 });
 
-            modelBuilder.Entity("CvHub.Models.User", b =>
+            modelBuilder.Entity("CVHub.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("City")
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FacebookId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("State")
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CVHub.Models.Cv", b =>
@@ -100,7 +122,7 @@ namespace CvHub.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvHub.Models.User", "User")
+                    b.HasOne("CVHub.Models.User", "User")
                         .WithMany("Cvs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -116,7 +138,7 @@ namespace CvHub.Migrations
                     b.Navigation("Cvs");
                 });
 
-            modelBuilder.Entity("CvHub.Models.User", b =>
+            modelBuilder.Entity("CVHub.Models.User", b =>
                 {
                     b.Navigation("Cvs");
                 });

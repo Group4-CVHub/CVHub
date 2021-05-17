@@ -1,16 +1,14 @@
 ﻿@model CVHub.Models.User
 
-<head>
-    <link rel="stylesheet" href="~/css/socialMedia.css" />
-</head>
+<link rel="stylesheet" href="~/css/socialMedia.css" />
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-8 col-xl-4 p-sm-2 p-md-2 p-lg-5 p-xl-5">
-            <div class="card-signin">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign In</h5>
-                    <form method="post" asp-controller="Validation" asp-action="DbAuthenticate" class="form-signin">
+                    <form method="post" asp-action="DbAuthenticate" class="form-signin">
                         <div class="form-label-group">
                             <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                             <label for="inputEmail">Email address</label>
@@ -23,13 +21,15 @@
                         <a asp-controller="User" asp-action="Register" class="btn btn-lg btn-success btn-block text-uppercase">Register</a>
                         <hr class="my-4">
                         @*<a asp-action="GoogleSignIn" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</a>*@
-                        <a asp-controller="Validation" asp-action="FacebookSignIn" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
+                        <a asp-action="FacebookSignIn" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 p-sm-2 p-md-2 p-lg-5 p-xl-5 offset-xl-4">
-            <img src="~/Pic/Favicon.png" alt="CV">
-        </div>
     </div>
 </div>
+
+
+
+
+

@@ -1,0 +1,38 @@
+﻿
+h5{
+    color:#98c1d9;
+}
+
+body{
+    color:#c2c2c2;
+}
+
+form {
+    color: #c2c2c2;
+}
+
+
+.custom-file-input{
+    text-align: left;
+}
+div.wholeform {
+    word-wrap: break-word; /*prevents overflow of text in divs*/
+    padding:2%;
+}
+.col, div, row{
+    margin: 1% 0 1% 0;
+}
+.form-control{
+    margin: auto auto 3% auto;
+}
+
+hr {
+    margin: 1% 0 1% 0;
+}
+
+
+/*index page*/
+
+.container.wholeform .indexpage {
+    text-align: center;
+}
