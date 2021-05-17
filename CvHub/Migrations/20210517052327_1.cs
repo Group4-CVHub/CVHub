@@ -30,8 +30,10 @@ namespace CvHub.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: true),
-                    FacebookId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GoogleId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Country = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: true),
+                    City = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: true),
+                    State = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: true),
+                    FacebookId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

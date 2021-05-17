@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CvHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210514190011_1")]
+    [Migration("20210517052327_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,14 @@ namespace CvHub.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("City")
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -81,9 +89,6 @@ namespace CvHub.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("GoogleId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -98,6 +103,10 @@ namespace CvHub.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("State")
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
 
                     b.HasKey("UserId");
 

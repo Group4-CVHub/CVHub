@@ -21,8 +21,14 @@ namespace CVHub.Models
         public string LastName { get; set; }
         [Phone(ErrorMessage = "Need to enter a phone number"), StringLength(12, MinimumLength = 10)]
         public string PhoneNumber { get; set; }
+        [StringLength(75)]
+        public string Country { get; set; }
+        [StringLength(75)]
+        public string City { get; set; }
+        [StringLength(75)]
+        public string State { get; set; }
         public string FacebookId { get; set; }
-        public string GoogleId { get; set; }
+        //public string GoogleId { get; set; }
         public ICollection<Cv> Cvs { get; set; }
     }
 }
