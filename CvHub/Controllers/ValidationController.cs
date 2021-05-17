@@ -181,7 +181,7 @@ namespace CVHub.Controllers
                 var userPrincipal = new ClaimsPrincipal(claimIdentity);
 
                 HttpContext.SignInAsync(userPrincipal);
-                return View("SuccessfullLogIn", DbUser);
+                return Redirect("/User/MyPage");
             }
             else
             {
