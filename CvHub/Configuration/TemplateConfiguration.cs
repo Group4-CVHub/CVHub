@@ -16,7 +16,8 @@ namespace CVHub.Configurations
             modelBuilder.Property(t => t.TemplateId)
                         .ValueGeneratedOnAdd();
             modelBuilder.HasMany(t => t.Cvs)
-                        .WithOne(c => c.Template);
+                        .WithOne(c => c.Template)
+                        .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

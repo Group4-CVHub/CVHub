@@ -1,6 +1,4 @@
-using System;
-
-namespace CvHub.Models
+namespace CVHub.Models
 {
     public class ErrorViewModel
     {

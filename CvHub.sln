@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvHub", "CvHub\CvHub.csproj", "{63A766A2-AE0C-402D-9D42-FA55F345CF58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVHub", "CvHub\CVHub.csproj", "{63A766A2-AE0C-402D-9D42-FA55F345CF58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

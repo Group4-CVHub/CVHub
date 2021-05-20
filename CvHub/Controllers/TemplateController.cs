@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CVHub.Models;
 
-namespace CvHub.Controllers
+namespace CVHub.Controllers
 {
     public class TemplateController : Controller
     {
@@ -13,15 +10,30 @@ namespace CvHub.Controllers
             return View();
         }
 
-        public IActionResult Cv()
+        public IActionResult Template1()
         {
             return View();
         }
 
+        [HttpGet]
         public IActionResult TemplateForm()
         {
-            return View();
+            var cv = new CvTemp();
+            return View(cv);
         }
-      
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult AddEducation(CvTemp obj)
+        {
+            obj.Educations.Add(new Education());
+            return View("TemplateForm", obj);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult AddWork(CvTemp obj)
+        {
+            obj.WorkPlaces.Add(new Work());
+            return View("TemplateForm", obj);
+        }
     }
 }

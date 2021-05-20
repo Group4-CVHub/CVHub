@@ -1,0 +1,94 @@
+﻿@model CVHub.Models.Cv
+
+<meta name="keywords" content="About Us, CV, Job Application, Help with CV, CVHub">
+
+<link rel="stylesheet" href="~/css/template/templatestylesheet.css" />
+
+<div class="row header">
+
+    <div id="profilePic" class=" col-4 col-lg-4 col-md-4 col-sm-4">
+        <img class="profilePicUrl" src= @Model.Picture alt="profile picture" />
+    </div>
+    <div id="name" class="col col-lg-8 col-md-8 col-sm-8">
+        <h1> @Model.User.FirstName @Model.User.LastName</h1>
+        <h4>@Model.Title</h4>
+        <div class="btn-group-vertical float">
+            <a class="btn" href="#profilePic" role="button">About me</a>
+            <a class="btn" href="#education" role="button">Education</a>
+            <a class="btn" href="#work" role="button">Work</a>
+            <a class="btn" href="#contactMe" role="button">Contact</a>
+            <a class="btn" href="https://www.linkedin.com/" target="_blank" role="button">LinkedIn</a>
+
+        </div>
+    </div>
+</div>
+
+<div id="aboutMe" class="row padding">
+    <h2> About me </h2>
+    <p>
+        @Model.AboutMe
+    </p>
+</div>
+
+<hr style="width:85%; border-width:5px;margin: 5% auto 5% auto; ">
+
+
+<div id="experience" class="container">
+
+    <div class="row" style="margin-top: 5%;">
+
+        <div id="experiencePic" class="padding col-4 col-lg-4 col-md-4 col-sm-4">
+            <img src="~/css/template/img/booksdark.svg" alt="education" />
+        </div>
+        <div id="education" class="experienceText col col-lg-8 col-md-8 col-sm-8">
+            @foreach (Education education in Model.Educations)
+            {
+                <strong>@education.Name</strong>
+                <p>@education.EducationStart - @education.EducationStop - @education.Degree</p>
+                <br />
+            }
+        </div>
+
+    </div>
+
+    <hr style="width:50%; margin: 5% auto 5% auto; ">
+
+
+    <div class="row" style="margin-top: 5%;">
+
+        <div id="experiencePic" class="padding col col-lg-4 col-md-4 col-sm-4">
+            <img src="~/css/template/img/workdark.svg" alt="education" />
+        </div>
+        <div id="work" class="experienceText col col-lg-8 col-md-8 col-sm-8">
+            <h2>Work</h2>
+            @foreach (Work work in Model.WorkPlaces)
+            {
+                <strong>@work.Name</strong>
+                <p>@work.WorkStart - @work.WorkStop</p>
+                <p>@work.Description</p>
+                <br />
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr style="width:85%; border-width:5px;margin: 5% auto 5% auto; ">
+
+<div id="contactMe" class="container">
+
+
+    <div class="row">
+        <div class="col">
+            <img src="~/css/template/img/mail.svg" alt="mail" style="max-height: 100px; max-width: 100px; margin-bottom: 10%;" />
+            <p id="email">@Model.User.Email</p>
+        </div>
+        <div class="col">
+            <img src="~/css/template/img/phone.svg" alt="phone" style="max-height:100px; max-width: 100px; margin-bottom:10%;" />
+            <p id="phonenumber">@Model.User.PhoneNumber</p>
+        </div>
+
+    </div>
+</div>

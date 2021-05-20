@@ -17,10 +17,15 @@ namespace CVHub.Configurations
                         .ValueGeneratedOnAdd();
             modelBuilder.HasOne(c => c.Template)
                         .WithMany(t => t.Cvs)
-                        .HasForeignKey(c => c.TemplateId);
+                        .HasForeignKey(c => c.TemplateId)
+                        .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.HasOne(c => c.User)
                         .WithMany(u => u.Cvs)
-                        .HasForeignKey(c => c.UserId);
+                        .HasForeignKey(c => c.UserId)
+                        .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.HasMany(c => c.Educations)
+                        .WithOne(c => c.Cv)
+                        .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

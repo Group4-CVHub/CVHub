@@ -1,11 +1,7 @@
-﻿
-using CvHub.Configuration;
+﻿using CVHub.Configuration;
 using CVHub.Configurations;
 using CVHub.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CVHub.Data
 {
@@ -20,6 +16,8 @@ namespace CVHub.Data
         public DbSet<Cv> Cvs { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Education> Educations {get; set;}
+        public DbSet<Work> WorkPlaces { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +29,12 @@ namespace CVHub.Data
 
             modelBuilder
                 .ApplyConfiguration(new UserConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new EducationConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new WorkConfiguration());
         }
     }
 }
