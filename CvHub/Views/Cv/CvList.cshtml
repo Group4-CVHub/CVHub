@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CVHub.Models.Cv>
+
+<meta name="keywords" content="About Us, CV, Job Application, Help with CV, CVHub">
+<link rel="stylesheet" href="~/css/template/index.css" />
+
+@if (Model.Count() > 0)
+{
+    <h3>Choose what cv to open.</h3>
+
+    <div class="container">
+        @foreach (var cv in Model)
+        {
+            <div class="row templates" style="margin:8% auto 0 auto;">
+                <h3>Title: @cv.Title</h3>
+                <div class="col">
+                    <img src="~/css/template/img/cvimg.svg" style="width:70%" title="Minimalist" alt="Minimalist" />
+                </div>
+            </div>
+            <div class="col">
+                <a class="btn btn-primary" asp-controller="Cv" asp-action="Get" asp-route-Id="@cv.CvId">Choose</a>
+            </div>
+        }
+    </div>
+    <div>
+        <a asp-controller="User" asp-action="MyPage" class="btn-danger">Go back</a>
+    </div>
+}
+else
+{
+<div class="container">
+    <h3>No Cv created yet. </h3>
+    <div>
+        <a asp-controller="Template" asp-action="Index" class="btn-primary">Create Cv</a>
+        <a asp-controller="User" asp-action="MyPage" class="btn-danger">Go back</a>
+    </div>
+</div>
+}
+
+
