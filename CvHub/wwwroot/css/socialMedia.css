@@ -73,15 +73,8 @@
     }
 
 
-.btn-google {
-    color: white;
-    background-color: #ea4335;
-}
 
-.btn-facebook {
-    color: white;
-    background-color: #3b5998;
-}
+
 
 @supports (-ms-ime-align: auto) {
     .form-label-group > label {
@@ -102,13 +95,6 @@
 
 /*Rebecca*/
 
-/*Sets the max-width and height of the logo*/
-.picture{
-    max-width:25%;
-    max-height:25%;
-}
-
-
 /*creates a margin around the logo*/
 .col.mx-auto.text-center{
     margin:4% auto 8% auto;
@@ -119,13 +105,29 @@
 margin: 4% auto 4% auto;
 }
 
-/*changes the success button to a green that matches our color scheme*/
+/*changes color of sign in button*/
+.btn-primary {
+    background-color: #98c0d9;
+    border-color: #98c0d9;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #74a1b7;
+        border-color: #74a1b7;
+        color: white;
+    }
+
+    /*changes color of register button*/
 .btn-success {
+    border-color: #b3d89a;
     background-color: #b3d89a;
     color: white;
 }
 
-.login-logo{
-    max-width: 50px; 
-    max-height: 50px;
-}
+    .btn-success:hover {
+        border-color: #95ba78;
+        background-color: #95ba78;
+        color: white;
+    }
+
