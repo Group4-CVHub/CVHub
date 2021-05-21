@@ -2,6 +2,7 @@
 using CVHub.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace CVHub.Controllers
             _db = db;
         }
 
-        [AllowAnonymous]
+        [AllowAnonymous, HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -36,6 +37,7 @@ namespace CVHub.Controllers
                 {
                     _db.Users.Add(obj);
                     _db.SaveChanges();
+                    obj.UserId = _db.Users.Where(u => u.Email == obj.Email).FirstOrDefault().UserId;
 
                     var serverClaims = new List<Claim>()
                 {
@@ -48,11 +50,14 @@ namespace CVHub.Controllers
 
                     HttpContext.SignInAsync(userPrincipal);
 
-                    return RedirectToAction("MyPage");
+                    //Skapar en session
+                    HttpContext.Session.SetString("Email", obj.Email);
+
+                    return View("MyPage", obj);
                 }
                 catch
                 {
-                    return View("Register", obj);
+                    return View("Register");
                 }
             }
             else
@@ -61,6 +66,7 @@ namespace CVHub.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult MyPage()
         {
             if (GetOne(null) != null)
@@ -82,16 +88,9 @@ namespace CVHub.Controllers
                 var user = _db.Users.Find(Id);
                 return user;
             }
-            else if (HttpContext.User.Identities.FirstOrDefault().Claims.ElementAt(1).Type.ToString() == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
+            else if (HttpContext.Session.GetString("Email") != null)
             {
-                var email = HttpContext.User.Identities.FirstOrDefault().Claims.ElementAt(1).Value.ToString();
-                var user = _db.Users.Where(u => u.Email == email).FirstOrDefault();
-                return user;
-            }
-            else if (HttpContext.User.Identities.FirstOrDefault().Claims.ElementAt(0).Type.ToString() == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
-            {
-                var email = HttpContext.User.Identities.FirstOrDefault().Claims.ElementAt(0).Value.ToString();
-                var user = _db.Users.Where(u => u.Email == email).FirstOrDefault();
+                var user = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault();
                 return user;
             }
             else

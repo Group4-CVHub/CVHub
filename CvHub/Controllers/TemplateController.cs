@@ -1,10 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CVHub.Models;
+using CVHub.Data;
+using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace CVHub.Controllers
 {
     public class TemplateController : Controller
     {
+        private readonly ApplicationDbContext _db;
+
+        public TemplateController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public IActionResult Index()
         {
             return View();
@@ -16,9 +25,9 @@ namespace CVHub.Controllers
         }
 
         [HttpGet]
-        public IActionResult TemplateForm()
+        public IActionResult TemplateForm1()
         {
-            var cv = new CvTemp();
+            CvTemp cv = new();
             return View(cv);
         }
 
@@ -26,14 +35,14 @@ namespace CVHub.Controllers
         public IActionResult AddEducation(CvTemp obj)
         {
             obj.Educations.Add(new Education());
-            return View("TemplateForm", obj);
+            return View("TemplateForm1", obj);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult AddWork(CvTemp obj)
         {
             obj.WorkPlaces.Add(new Work());
-            return View("TemplateForm", obj);
+            return View("TemplateForm1", obj);
         }
     }
 }

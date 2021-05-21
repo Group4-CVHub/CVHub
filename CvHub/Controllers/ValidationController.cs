@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace CVHub.Controllers
                 var fName = result.Principal.Identities.FirstOrDefault().Claims.ElementAt(3).Value.ToString();
                 var lName = result.Principal.Identities.FirstOrDefault().Claims.ElementAt(4).Value.ToString();
 
-                User user = new User { FacebookId = facebookID, Email = email, FirstName = fName, LastName = lName };
+                User user = new () { FacebookId = facebookID, Email = email, FirstName = fName, LastName = lName };
 
                 var DbUser = _db.Users.Where(u => u.Email == user.Email).FirstOrDefault();
 
@@ -70,10 +71,14 @@ namespace CVHub.Controllers
                 {
                     if (DbUser.FacebookId != null && DbUser.Email != null)
                     {
+                        //Skapar en session
+                        HttpContext.Session.SetString("Email", DbUser.Email);
                         return RedirectToAction("MyPage", "User");
                     }
                     else if (DbUser.FacebookId == null && DbUser.Email != null)
                     {
+                        //Skapar en session
+                        HttpContext.Session.SetString("Email", DbUser.Email);
                         DbUser.FacebookId = facebookID;
                         _db.SaveChanges();
                         return RedirectToAction("MyPage", "User");
@@ -179,6 +184,10 @@ namespace CVHub.Controllers
                 var userPrincipal = new ClaimsPrincipal(claimIdentity);
 
                 HttpContext.SignInAsync(userPrincipal);
+
+                //Skapar en session
+                HttpContext.Session.SetString("Email", DbUser.Email);
+
                 return Redirect("/User/MyPage");
             }
             else
@@ -190,13 +199,10 @@ namespace CVHub.Controllers
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
             return Redirect("/Home/Index");
         }
 
-        public IActionResult SuccessfullLogIn()
-        {
-            return View();
-        }
     }
 }
 
