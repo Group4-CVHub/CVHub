@@ -61,22 +61,9 @@ namespace CVHub.Controllers
         {
             Cv cv = _db.Cvs.Find(id);
 
-            //fyller på utbildningar och jobb för objektet som ska visas i view.
-            var educations = _db.Educations.Where(e => e.CvId == cv.CvId).ToList();
-            var workPlaces = _db.WorkPlaces.Where(w => w.CvId == cv.CvId).ToList();
-            
-            foreach (Education e in educations)
-            {
-                cv.Educations.Add(e);
-            }
-            foreach (Work w in workPlaces)
-            {
-                cv.WorkPlaces.Add(w);
-            }
 
             //Kollar så det är den inloggade användaren som försöker få access till ett cv.
             var userId = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault().UserId;
-
 
             if (cv == null)
             {
@@ -88,6 +75,21 @@ namespace CVHub.Controllers
             }
             else
             {
+                List<Education> educations;
+                List<Work> workPlaces;
+                //fyller på utbildningar och jobb för objektet som ska visas i view.
+                educations = _db.Educations.Where(e => e.CvId == cv.CvId).ToList();
+                workPlaces = _db.WorkPlaces.Where(w => w.CvId == cv.CvId).ToList();
+
+                foreach (Education e in educations)
+                {
+                    cv.Educations.Add(e);
+                }
+                foreach (Work w in workPlaces)
+                {
+                    cv.WorkPlaces.Add(w);
+                }
+
                 return View("Cv", cv);
             }
         }
