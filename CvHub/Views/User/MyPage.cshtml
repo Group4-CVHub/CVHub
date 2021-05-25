@@ -8,12 +8,13 @@
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class=" d-flex flex-column align-items-center text-center">
-                    <img class="rounded-circle" src="/css/myPage/images/avatar.png" id="photo" width="90">
+                    <img class="rounded-circle mt-5" src="/css/myPage/images/avatar.png" id="photo" width="90">
                     <span class="font-weight-bold">@Model.FirstName @Model.LastName</span>
                     <span class="text-black-50">@Model.Email</span>
                     <span>@Model.Country</span>
                 </div>
-                <div class="mt-5 text-center"><a class="btn btn-outline-primary profile-button" asp-controller="Cv" asp-action="CvList" type="button">My CVs</a></div>
+                <div class="mt-5 text-center"><a class="btn btn-outline-primary profile-button btn-sm" asp-controller="Cv" asp-action="CvList" type="button">My CVs</a></div>
+                <div class="mt-2 text-center"><a class="btn btn-outline-primary profile-button btn-sm" asp-controller="Cv" asp-action="CvList" type="button">Edit Profile</a></div>
             </div>
             <div class="col-md-6">
                 <div class="p-3 py-5">
@@ -23,35 +24,43 @@
                     <div class="row mt-3">
                         <div class="profile-form col-md-6">
                             <label class="labels">First name</label>
-                            <input type="text" class="form-control" placeholder="@Model.FirstName">
+                            <br />
+                            <span id="firstName"> @Model.FirstName </span>
                         </div>
                         <div class="profile-form col-md-6">
                             <label class="labels">Surname</label>
-                            <input type="text" class="form-control" placeholder="@Model.LastName">
+                            <br />
+                            <span id="lastName">@Model.LastName</span> 
                         </div>
                         <div class="profile-form col-md-12">
                             <label class="labels">Email</label>
-                            <input type="email" class="form-control" placeholder="@Model.Email">
+                            <br />
+                            <span id="email">@Model.Email</span>
                         </div>
                         <div class="profile-form col-md-12">
                             <label class="labels">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="@Model.PhoneNumber">
+                            <br />
+                            <span id="phonenumber">@Model.PhoneNumber</span>
                         </div>
                         <div class="profile-form col-md-6">
                             <label class="labels">City</label>
-                            <input type="text" class="form-control" placeholder="@Model.City">
+                            <br />
+                            <span id="city">@Model.City</span>
                         </div>
                         <div class="profile-form col-md-6">
                             <label class="labels">State/Region</label>
-                            <input type="text" class="form-control" placeholder="@Model.State">
+                            <br />
+                            <span id="state">@Model.State</span>
                         </div>
                         <div class="profile-form col-md-12">
                             <label class="labels">Country</label>
-                            <input type="text" class="form-control" placeholder="@Model.Country">
+                            <br />
+                            <span id="country">@Model.Country</span>
                         </div>
                         <div class="profile-form col-md-12">
                             <label class="labels">LinkedIn</label>
-                            <input type="url" class="form-control" placeholder="@Model.LinkedIn">
+                            <br />
+                            <span id="country">@Model.LinkedIn</span>
                         </div>
                     </div>
                 </div>
