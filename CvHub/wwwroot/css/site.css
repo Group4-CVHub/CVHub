@@ -8,11 +8,12 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.navbar{
+    margin: 0 0 auto 0;
+}
 /* Changes title color */
-
 h4.cvhub {
     color: #125e8a; /*darkblue*/
-    
 }
 
 /* Changes tab color */
@@ -82,6 +83,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  padding: 0;
 }
 .footer {
   position: absolute;
