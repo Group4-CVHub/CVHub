@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="icon" href="~/Pic/Favicon.png" type="image/vnd.microsoft.icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container col-12">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mt-3 mb-3">
+            <div class="container col-11">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index"><h4 class="cvhub"><b>CVHub</b></h4></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +60,7 @@
         </main>
     </div>
     
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted text-center">
         <div class="container copyright col-12">
             &copy; 2021 - CvHub - <a asp-controller="Home" asp-action="AboutUs">About Us</a>
         </div>

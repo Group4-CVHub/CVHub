@@ -2,6 +2,15 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Roboto', sans-serif;
+}
+
+p, em, a{
+    font-family:'Open Sans', sans-serif;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -14,15 +23,19 @@ a.navbar-brand {
 /* Changes title color */
 h4.cvhub {
     color: #125e8a; /*darkblue*/
+    font-family: 'Roboto', sans-serif;
+    font-weight:900;
 }
 
 /* Changes tab color */
 h6.tab {
     color: #125e8a; /*darkblue*/
+    font-family: 'Roboto', sans-serif;
 }
 
     h6.tab:hover {
         color: #98c1d9; /*lightblue*/
+        font-family: 'Roboto', sans-serif;
     }
 
 /* Provide sufficient contrast against white background */

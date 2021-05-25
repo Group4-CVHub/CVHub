@@ -7,6 +7,7 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
+                    <img class="col mx-auto text-center" src="~/Pic/cvlogo.svg" alt="CV" style="max-height:100px;">
                     <h5 class="card-title text-center">Sign In</h5>
                     <form method="post" asp-action="DbAuthenticate" class="form-signin">
                         <div class="form-label-group">
@@ -21,7 +22,7 @@
                         <a asp-controller="User" asp-action="Register" class="btn btn-lg btn-success btn-block text-uppercase">Register</a>
                         <hr class="my-4">
                         @*<a asp-action="GoogleSignIn" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</a>*@
-                        <a asp-action="FacebookSignIn" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
+                        <a asp-controller="Validation" asp-action="FacebookSignIn"><i class="fab fa-facebook-f mr-2"></i> <img class="col mx-auto text-center" src="~/Pic/facebook-logo.svg" title="Sign in with Facebook" style="max-height:50px;"></a>
                     </form>
                 </div>
             </div>
