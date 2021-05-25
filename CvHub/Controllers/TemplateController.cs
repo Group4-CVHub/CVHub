@@ -3,9 +3,11 @@ using CVHub.Models;
 using CVHub.Data;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CVHub.Controllers
 {
+    [Authorize]
     public class TemplateController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -14,11 +16,12 @@ namespace CVHub.Controllers
         {
             _db = db;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
-
+        [AllowAnonymous]
         public IActionResult Template1()
         {
             return View();

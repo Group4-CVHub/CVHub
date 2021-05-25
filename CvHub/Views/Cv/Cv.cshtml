@@ -17,8 +17,14 @@
             <a class="btn" href="#education" role="button">Education</a>
             <a class="btn" href="#work" role="button">Work</a>
             <a class="btn" href="#contactMe" role="button">Contact</a>
-            <a class="btn" href="https://www.linkedin.com/" target="_blank" role="button">LinkedIn</a>
-
+            @if (Model.User.LinkedIn == null)
+            {
+                <a class="btn" href="https://www.linkedin.com/" target="_blank" role="button">LinkedIn</a>
+            }
+            else
+            {
+                <a class="btn" href="@Model.User.LinkedIn" target="_blank" role="button">LinkedIn</a>
+            }
         </div>
     </div>
 </div>
@@ -41,7 +47,7 @@
             <img src="~/css/template/img/booksdark.svg" alt="education" />
         </div>
         <div id="education" class="experienceText col col-lg-8 col-md-8 col-sm-8">
-            @foreach (Education education in Model.Educations)
+            @foreach (var education in Model.Educations)
             {
                 <strong>@education.Name</strong>
                 <p>@education.EducationStart - @education.EducationStop - @education.Degree</p>
@@ -61,7 +67,7 @@
         </div>
         <div id="work" class="experienceText col col-lg-8 col-md-8 col-sm-8">
             <h2>Work</h2>
-            @foreach (Work work in Model.WorkPlaces)
+            @foreach (var work in Model.WorkPlaces)
             {
                 <strong>@work.Name</strong>
                 <p>@work.WorkStart - @work.WorkStop</p>

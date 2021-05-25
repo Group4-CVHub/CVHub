@@ -27,6 +27,7 @@ namespace CVHub.Models
         public string City { get; set; }
         [StringLength(75)]
         public string State { get; set; }
+        public string LinkedIn { get; set; }
         public string FacebookId { get; set; }
         //public string GoogleId { get; set; }
         public ICollection<Cv> Cvs { get; set; }
