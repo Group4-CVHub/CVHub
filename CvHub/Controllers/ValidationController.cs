@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CVHub.Controllers
 {
-    [Authorize]
+    [Authorize, ApiController, Route("Validation")]
     public class ValidationController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -24,13 +24,13 @@ namespace CVHub.Controllers
         }
 
 
-        [AllowAnonymous]
+        [AllowAnonymous, HttpGet("SignIn")]
         public IActionResult SignIn()
         {
             return View();
         }
 
-        [AllowAnonymous]
+        [AllowAnonymous, HttpGet("FacebookSignIn")]
         public IActionResult FacebookSignIn()
         {
             //Skapar ett objekt med authentication properties och sätter redirectURL till facebook validerings sidan.
@@ -44,6 +44,7 @@ namespace CVHub.Controllers
             return Challenge(properties, FacebookDefaults.AuthenticationScheme);
         }
 
+        [HttpGet("FacebookAuthentication")]
         public async Task<IActionResult> FacebookAuthentication()
         {
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -167,7 +168,7 @@ namespace CVHub.Controllers
         //}
 
         [AllowAnonymous]
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost("DbAuthentication"), ValidateAntiForgeryToken]
         public IActionResult DbAuthenticate(User user)
         {
             var DbUser = _db.Users.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
@@ -196,6 +197,7 @@ namespace CVHub.Controllers
             }
         }
 
+        [HttpGet("LogOut")]
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

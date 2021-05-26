@@ -10,7 +10,7 @@ using System.Security.Claims;
 
 namespace CVHub.Controllers
 {
-    [Authorize]
+    [Authorize, ApiController, Route("User")]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -20,14 +20,14 @@ namespace CVHub.Controllers
             _db = db;
         }
 
-        [AllowAnonymous, HttpGet]
+        [AllowAnonymous, HttpGet("Register")]
         public IActionResult Register()
         {
             return View();
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(User obj)
         {
@@ -66,7 +66,7 @@ namespace CVHub.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("MyPage")]
         public IActionResult MyPage()
         {
             if (GetOne(null) != null)
@@ -80,7 +80,7 @@ namespace CVHub.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("GetOne")]
         public User GetOne(int? Id)
         {
             if (Id != null)
