@@ -14,9 +14,9 @@
             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
         </div>
 
-        <div class="col">
+        <div class="col pl-0">
             <h5>Title</h5>
-            <input asp-for="Title" type="text" class="form-control" placeholder="First name">
+            <input asp-for="Title" type="text" class="form-control" placeholder="Job title">
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
@@ -49,7 +49,8 @@
                 <br />
             </div>
         }
-        <button asp-action="AddEducation">Add education</button>
+        <button  class="btn btn-light border mb-4" asp-action="AddEducation">Add education</button>
+
 
         @*/ workplace *@
 
@@ -77,8 +78,7 @@
                 <br />
             </div>
         }
-        <button asp-action="AddWork" class="btn-dark text-center">Add work place</button>
-
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-light border mb-4" asp-action="AddWork">Add work place</button>
     </form>
+    <button class="btn btn-primary" type="submit">Submit</button>
 </div>
