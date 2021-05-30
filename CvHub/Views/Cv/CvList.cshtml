@@ -5,24 +5,27 @@
 
 @if (Model.Count() > 0)
 {
-    <h3>Choose what cv to open.</h3>
+    <h3 class="text-center">Choose what cv to open.</h3>
 
     <div class="container">
         @foreach (var cv in Model)
         {
-            <div class="row templates" style="margin:8% auto 0 auto;">
-                <h3>Title: @cv.Title</h3>
+            <h3 class="text-center mt-4 mb-0">CV - @cv.Title</h3>
+            <div class="row templates" style="margin:3% auto 0 auto;">
+
                 <div class="col">
                     <img src="~/css/template/img/cvimg.svg" style="width:70%" title="Minimalist" alt="Minimalist" />
                 </div>
             </div>
-            <div class="col">
-                <a class="btn btn-primary" asp-controller="Cv" asp-action="Get" asp-route-Id="@cv.CvId">Choose</a>
+            <div class="m-5 text-center">
+                <a class="btn btn-primary m-3" style="border:none;" asp-controller="Cv" asp-action="Get" asp-route-Id="@cv.CvId">Choose</a>
             </div>
+            <hr>
         }
+
     </div>
-    <div>
-        <a asp-controller="User" asp-action="MyPage" class="btn-danger">Go back</a>
+    <div class="text-center">
+        <a asp-controller="User" asp-action="MyPage" class="btn btn-danger mt-5 mb-2" style="border: none;background-color: #db9997;">Go back</a>
     </div>
 }
 else
@@ -30,8 +33,8 @@ else
 <div class="container">
     <h3>No Cv created yet. </h3>
     <div>
-        <a asp-controller="Template" asp-action="Index" class="btn-primary">Create Cv</a>
-        <a asp-controller="User" asp-action="MyPage" class="btn-danger">Go back</a>
+        <a asp-controller="Template" asp-action="Index" class="btn btn-primary m-3" style="border:none;">Create Cv</a>
+        <a asp-controller="User" asp-action="MyPage" class="btn btn-danger mt-5 mb-2" style="border: none;background-color: #db9997;">Go back</a>
     </div>
 </div>
 }

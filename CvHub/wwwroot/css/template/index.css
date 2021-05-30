@@ -14,5 +14,13 @@ h5{
     text-align:center !important;
 }
 
+hr{
+   margin: 3em;
+}
+
+.btn.btn-primary:hover{
+    background-color:orange;
+   
+}
 
 
