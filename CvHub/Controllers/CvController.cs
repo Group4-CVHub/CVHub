@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace CVHub.Controllers
 {
-    [Authorize]
+    [Authorize, ApiController, Route("Cv")]
     public class CvController : Controller
     {
 
@@ -18,14 +18,16 @@ namespace CVHub.Controllers
         {
             _db = db;
         }
+
+        [HttpGet("Index")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CvTemp obj)
+        public IActionResult Create1([FromForm]CvTemp obj)
         {
             Cv cv = new(){ 
                 User = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault(),
@@ -33,6 +35,7 @@ namespace CVHub.Controllers
                 Educations = obj.Educations,
                 Picture = obj.Picture,
                 Template = _db.Templates.Find(1),
+                TemplateId = 1,
                 Title = obj.Title,
                 WorkPlaces = obj.WorkPlaces
             };
@@ -48,7 +51,7 @@ namespace CVHub.Controllers
             return View(obj);
         }
 
-        [HttpGet]
+        [HttpGet("CvList")]
         public IActionResult CvList()
         {
             var user = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault();
@@ -56,7 +59,7 @@ namespace CVHub.Controllers
             return View(cvs); 
         }
 
-        [HttpGet]
+        [HttpGet("Get")]
         public IActionResult Get(int id)
         {
             Cv cv = _db.Cvs.Find(id);
@@ -94,7 +97,7 @@ namespace CVHub.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("Cv")]
         public IActionResult Cv(Cv cv)
         {
             return View(cv);
