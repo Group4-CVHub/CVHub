@@ -29,7 +29,7 @@ namespace CVHub.Controllers
         [AllowAnonymous]
         [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(User obj)
+        public IActionResult Create([FromForm]User obj)
         {
             if (ModelState.IsValid)
             {
@@ -96,6 +96,75 @@ namespace CVHub.Controllers
             else
             {
                 return null;
+            }
+        }
+
+        [HttpGet("Update")]
+        public IActionResult Update(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                User user = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault();
+                return View(user);
+            }
+            else
+            {
+                User user = _db.Users.Find(id);
+                return View(user);
+            }
+        }
+
+        [HttpPost("Update")]
+        public IActionResult Update([FromForm]User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Users.Update(user);
+                _db.SaveChanges();
+                return View("MyPage", user);
+            }
+            return View("MyPage", user);
+        }
+
+        [HttpGet("ChangePassword")]
+        public IActionResult ChangePassword(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var user = _db.Users.Find(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var _user = new ChangePasswordUser { UserId = user.UserId, OldPassword = user.Password, NewPassword = user.Password };
+            return View(_user);
+            
+        }
+
+        [HttpPost("ChangePassword")]
+        public IActionResult ChangePassword([FromForm]ChangePasswordUser fromFormUser)
+        {
+            //Tvungen att göra såhär för det gick inte att få med userId från view av någon anledning... 
+            User user = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault();
+            
+
+            if (user.Password != fromFormUser.OldPassword)
+            {
+                ViewBag.Message = "Wrong password entered!";
+                return View();
+            }
+            else if (ModelState.IsValid && fromFormUser.OldPassword == user.Password)
+            {
+                user.Password = fromFormUser.NewPassword;
+                _db.Users.Update(user);
+                _db.SaveChanges();
+                return View("MyPage", user);
+            }
+            else
+            {
+                return BadRequest();
             }
         }
     }

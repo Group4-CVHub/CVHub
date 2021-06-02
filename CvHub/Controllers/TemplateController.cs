@@ -32,19 +32,25 @@ namespace CVHub.Controllers
         [HttpGet("TemplateForm1")]
         public IActionResult TemplateForm1()
         {
+            if (_db.Templates.Find(1) == null)
+            {
+                _db.Templates.Add(new Template { Description = "Minimalist" });
+                _db.SaveChanges();
+            }
+            
             CvTemp cv = new();
             return View(cv);
         }
 
         [HttpPost("AddEducation"), ValidateAntiForgeryToken]
-        public IActionResult AddEducation(CvTemp obj)
+        public IActionResult AddEducation([FromForm]CvTemp obj)
         {
             obj.Educations.Add(new Education());
             return View("TemplateForm1", obj);
         }
 
         [HttpPost("AddWork"), ValidateAntiForgeryToken]
-        public IActionResult AddWork(CvTemp obj)
+        public IActionResult AddWork([FromForm]CvTemp obj)
         {
             obj.WorkPlaces.Add(new Work());
             return View("TemplateForm1", obj);

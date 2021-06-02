@@ -27,7 +27,7 @@ namespace CVHub.Controllers
 
         [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CvTemp obj)
+        public IActionResult Create1([FromForm]CvTemp obj)
         {
             Cv cv = new(){ 
                 User = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault(),
@@ -35,6 +35,7 @@ namespace CVHub.Controllers
                 Educations = obj.Educations,
                 Picture = obj.Picture,
                 Template = _db.Templates.Find(1),
+                TemplateId = 1,
                 Title = obj.Title,
                 WorkPlaces = obj.WorkPlaces
             };

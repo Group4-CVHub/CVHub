@@ -169,7 +169,7 @@ namespace CVHub.Controllers
 
         [AllowAnonymous]
         [HttpPost("DbAuthentication"), ValidateAntiForgeryToken]
-        public IActionResult DbAuthenticate(User user)
+        public IActionResult DbAuthenticate([FromForm]LoginUser user)
         {
             var DbUser = _db.Users.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
 
