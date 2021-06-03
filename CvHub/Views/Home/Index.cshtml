@@ -20,8 +20,9 @@
                             <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                             
                         </div>
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-                        <a asp-controller="User" asp-action="Register" class="btn btn-lg btn-success btn-block text-uppercase">Register</a>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="submit" type="submit">Sign in</button>
+
+                        <a asp-controller="User" asp-action="Register" id="register" class="btn btn-lg btn-success btn-block text-uppercase">Register</a>
                         <hr class="my-4">
                         @*<a asp-action="GoogleSignIn" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</a>*@
                         <a asp-controller="Validation" asp-action="FacebookSignIn" ><i class="fab fa-facebook-f mr-2"></i> <img class="col mx-auto text-center" src="~/Pic/facebook-logo.svg" title="Sign in with Facebook" style="max-height:50px;"></a>
