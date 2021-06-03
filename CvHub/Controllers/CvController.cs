@@ -102,5 +102,23 @@ namespace CVHub.Controllers
         {
             return View(cv);
         }
+
+        [HttpGet("DeleteCv")]
+        public IActionResult DeleteCv(int? id)
+        {
+            var cv = _db.Cvs.Find(id);
+            CvDelete cvToDelete = new CvDelete { CvId = cv.CvId, Title = cv.Title };
+            return View(cvToDelete);
+        }
+
+        [HttpPost("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            var cv = _db.Cvs.Find(id);
+            _db.Cvs.Remove(cv);
+            _db.SaveChanges();
+            return Redirect("/User/MyPage");
+        }
     }
 }

@@ -45,12 +45,12 @@
                 </div>
                 <div class="col">
                     Degree
-                    <input asp-for="Educations[i].Degree" type="text" class="form-control" placeholder="Degree">
+                    <textarea asp-for="Educations[i].Degree" type="text" class="form-control" placeholder="Degree" aria-label="With textarea"></textarea>
                 </div>
                 <br />
             </div>
         }
-        <button  class="btn btn-light border mb-4" asp-action="AddEducation">Add education</button>
+        <button class="btn btn-light border mb-4" asp-action="AddEducation">Add education</button>
 
 
         @*/ workplace *@
@@ -80,6 +80,7 @@
             </div>
         }
         <button class="btn btn-light border mb-4" asp-action="AddWork">Add work place</button>
+        <br />
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-    <button class="btn btn-primary" type="submit">Submit</button>
 </div>

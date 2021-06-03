@@ -115,6 +115,7 @@ namespace CVHub.Controllers
         }
 
         [HttpPost("Update")]
+        [ValidateAntiForgeryToken]
         public IActionResult Update([FromForm]User user)
         {
             if (ModelState.IsValid)
@@ -144,6 +145,7 @@ namespace CVHub.Controllers
         }
 
         [HttpPost("ChangePassword")]
+        [ValidateAntiForgeryToken]
         public IActionResult ChangePassword([FromForm]ChangePasswordUser fromFormUser)
         {
             //Tvungen att göra såhär för det gick inte att få med userId från view av någon anledning... 
