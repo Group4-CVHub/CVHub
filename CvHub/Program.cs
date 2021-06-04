@@ -1,16 +1,17 @@
+using CVHub.Data;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CvHub
 {
     public class Program
     {
+        private readonly ApplicationDbContext _db;
+
+        public Program(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

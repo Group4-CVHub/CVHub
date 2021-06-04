@@ -31,7 +31,7 @@
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="AboutUs"><h6 class="tab">About Us</h6></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Template" asp-action="index"><h6 class="tab">Templates</h6></a>
+                            <a class="nav-link text-dark" id="templates" asp-controller="Template" asp-action="index"><h6 class="tab">Templates</h6></a>
                         </li>
                         @if (HttpContextAccessor.HttpContext.Session.GetString("Email") != null)
                         {
