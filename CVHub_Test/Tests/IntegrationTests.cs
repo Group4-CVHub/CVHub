@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using CVHub.Models;
 using Xunit;
 
 namespace CVHub_Test.Tests
@@ -15,6 +13,7 @@ namespace CVHub_Test.Tests
         {
             Client = fixture.Client;
         }
+
 
         [Fact]
         public async Task Get_Cv_Index_Should_Return_OK()

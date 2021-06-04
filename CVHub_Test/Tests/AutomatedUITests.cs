@@ -1,11 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using Xunit;
 
 namespace CVHub_Test.AutomatedUITests
 {
-    [TestClass]
     public class AutomatedUITests : IDisposable
     {
         private readonly IWebDriver _driver;
@@ -14,7 +13,7 @@ namespace CVHub_Test.AutomatedUITests
             _driver = new ChromeDriver();
         }
 
-        [TestMethod]
+        [Fact]
         public void Login_With_Test_User_Should_Return_Successfull_Login()
         {
             _driver.Navigate()
@@ -26,10 +25,10 @@ namespace CVHub_Test.AutomatedUITests
             _driver.FindElement(By.Id("submit"))
                 .Click();
 
-            Assert.AreEqual("https://localhost:44382/User/MyPage", _driver.Url);
+            Assert.Equal("https://localhost:44382/User/MyPage", _driver.Url);
         }
 
-        [TestMethod]
+        [Fact]
         public void Create_New_User_When_Executed_Should_Return_New_User()
         {
             _driver.Navigate()
@@ -57,12 +56,12 @@ namespace CVHub_Test.AutomatedUITests
             _driver.FindElement(By.Id("createAccount"))
                 .Click();
 
-            Assert.AreEqual("localhost:44382/User/MyPage", _driver.Url);
-            Assert.AreEqual("Test", _driver.FindElement(By.Id("firstName")).Text);
-            Assert.AreEqual("Test", _driver.FindElement(By.Id("lastName")).Text);
+            Assert.Equal("localhost:44382/User/MyPage", _driver.Url);
+            Assert.Equal("Test", _driver.FindElement(By.Id("firstName")).Text);
+            Assert.Equal("Test", _driver.FindElement(By.Id("lastName")).Text);
         }
 
-        [TestMethod]
+        [Fact]
         public void Try_To_Go_To_TemplateForm1_When_Not_Logged_In_Should_Return_Redirect_Url()
         {
             _driver.Navigate()
@@ -72,10 +71,10 @@ namespace CVHub_Test.AutomatedUITests
             _driver.FindElement(By.Id("choose"))
                 .Click();
 
-            Assert.AreEqual("https://localhost:44382/Validation/SignIn?ReturnUrl=%2FTemplate%2FTemplateForm1", _driver.Url);
+            Assert.Equal("https://localhost:44382/Validation/SignIn?ReturnUrl=%2FTemplate%2FTemplateForm1", _driver.Url);
         }
 
-        [TestCleanup]
+        
         public void Dispose()
         {
             _driver.Quit();
@@ -83,4 +82,4 @@ namespace CVHub_Test.AutomatedUITests
         }
     }
 }
-    
+
