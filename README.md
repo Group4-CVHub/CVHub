@@ -8,3 +8,7 @@ ASP.NET MVC web application. A group project made for a school assignment.
 2. Open Package Manager Console.
 3. Type: add-migration 'message'
 4. Type: update-database
+
+## How To Examples ##
+
+### Example 1 ###
