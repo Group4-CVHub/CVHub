@@ -36,10 +36,10 @@
                         @if (HttpContextAccessor.HttpContext.Session.GetString("Email") != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark font-weight-bold" asp-controller="Validation" asp-action="LogOut"><h6 class="tab">Sign out</h6></a>
+                                <a class="nav-link text-dark font-weight-bold" id="signOut" asp-controller="Validation" asp-action="LogOut"><h6 class="tab">Sign out</h6></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark tab" asp-area="" asp-controller="User" asp-action="MyPage"><h6 class="tab">My Page</h6></a>
+                                <a class="nav-link text-dark tab" asp-controller="User" asp-action="MyPage"><h6 class="tab">My Page</h6></a>
                             </li>
                         }
                         else

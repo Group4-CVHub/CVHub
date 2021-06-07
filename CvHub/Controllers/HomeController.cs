@@ -29,6 +29,13 @@ namespace CVHub.Controllers
                 _db.Add(testUser);
                 _db.SaveChanges();
             }
+            //Ett av E2E testerna skapar en ny användare. Denna ser till så den tas bort efter. 
+            if (_db.Users.Where(u => u.Email == "test2@test2.com").FirstOrDefault() != null)
+            {
+                var newUser = _db.Users.Where(u => u.Email == "test2@test2.com").FirstOrDefault();
+                _db.Users.Remove(newUser);
+                _db.SaveChanges();
+            }
             return View();
         }
 

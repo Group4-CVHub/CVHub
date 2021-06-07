@@ -1,6 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using CVHub.Data;
+using Microsoft.AspNetCore.Http;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace CVHub_Test.AutomatedUITests
@@ -29,7 +32,7 @@ namespace CVHub_Test.AutomatedUITests
         }
 
         [Fact]
-        public void Create_New_User_When_Executed_Should_Return_New_User()
+        public void Create_New_User_Then_Sign_Out_When_Executed_Should_Return_User_Is_On_Homepage()
         {
             _driver.Navigate()
                 .GoToUrl("https://localhost:44382/");
@@ -55,10 +58,10 @@ namespace CVHub_Test.AutomatedUITests
                 .SendKeys("123456");
             _driver.FindElement(By.Id("createAccount"))
                 .Click();
+            _driver.FindElement(By.Id("signOut"))
+                .Click();
 
-            Assert.Equal("localhost:44382/User/MyPage", _driver.Url);
-            Assert.Equal("Test", _driver.FindElement(By.Id("firstName")).Text);
-            Assert.Equal("Test", _driver.FindElement(By.Id("lastName")).Text);
+            Assert.Equal("https://localhost:44382/Home/Index", _driver.Url);
         }
 
         [Fact]
