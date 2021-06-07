@@ -25,7 +25,7 @@ namespace CVHub.Controllers
             //Gör så det alltid ska finnas en test användare som testerna kan köras mot.
             if (_db.Users.Where(u => u.Email == "test@test.com").FirstOrDefault() == null)
             {
-                var testUser = new User { Email = "test@test.com", Password = "123456", FirstName = "test", LastName = "test", Country = "test", City = "test", State = "test", PhoneNumber = "1234567891" };
+                var testUser = new User { Email = "test@test.com", Password = "123456", FirstName = "test", LastName = "test", Country = "test", City = "test", PostalCode = "test", PhoneNumber = "1234567891" };
                 _db.Add(testUser);
                 _db.SaveChanges();
             }
