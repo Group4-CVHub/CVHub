@@ -47,11 +47,15 @@
             <img src="~/css/template/img/booksdark.svg" alt="education" />
         </div>
         <div id="education" class="experienceText col col-lg-8 col-md-8 col-sm-8">
-            @foreach (var education in Model.Educations)
+            <h2>Education</h2>
+            @if (Model.Educations != null)
             {
-                <strong>@education.Name</strong>
-                <p>@education.EducationStart - @education.EducationStop - @education.Degree</p>
-                <br />
+                @foreach (var education in Model.Educations)
+                {
+                    <strong>@education.Name</strong>
+                    <p>@education.EducationStart - @education.EducationStop - @education.Degree</p>
+                    <br />
+                }
             }
         </div>
 
@@ -67,15 +71,17 @@
         </div>
         <div id="work" class="experienceText col col-lg-8 col-md-8 col-sm-8">
             <h2>Work</h2>
-            @foreach (var work in Model.WorkPlaces)
+            @if (Model.WorkPlaces != null)
             {
-                <strong>@work.Name</strong>
-                <p>@work.WorkStart - @work.WorkStop</p>
-                <p>@work.Description</p>
-                <br />
+                @foreach (var work in Model.WorkPlaces)
+                {
+                    <strong>@work.Name</strong>
+                    <p>@work.WorkStart - @work.WorkStop</p>
+                    <p>@work.Description</p>
+                    <br />
+                }
             }
-
-        </div>
+            </div>
 
     </div>
 
