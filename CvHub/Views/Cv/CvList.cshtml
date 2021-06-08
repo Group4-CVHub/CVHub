@@ -31,12 +31,14 @@
 }
 else
 {
-<div class="container">
+<div class="container text-center">
     <h3>No Cv created yet. </h3>
-    <div>
-        <a asp-controller="Template" asp-action="Index" class="btn btn-primary m-3" style="border:none;">Create Cv</a>
-        <a asp-controller="User" asp-action="MyPage" class="btn btn-danger mt-5 mb-2" style="border: none;background-color: #db9997;">Go back</a>
-    </div>
+    <div class="row" style="vertical-align:bottom;">
+        <span class="mx-auto">
+            <a asp-controller="Template" asp-action="Index" class="btn btn-primary m-3" style="border:none;">Create Cv</a>
+            <a asp-controller="User" asp-action="MyPage" class="btn btn-danger m-3" style="border: none;background-color: #db9997;">Go back</a>
+        </span>
+            </div>
 </div>
 }
 

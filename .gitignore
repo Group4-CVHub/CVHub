@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /CvHub/Migrations/20210525163715_initialCreae.cs
 /CvHub/Migrations/20210525163715_initialCreae.Designer.cs
+/CvHub/Migrations/20210608144848_CreateCvHubDb.cs
+/CvHub/Migrations/20210608144848_CreateCvHubDb.Designer.cs
