@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CVHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210607123411_AlmostLastMigration")]
-    partial class AlmostLastMigration
+    [Migration("20210608101403_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
