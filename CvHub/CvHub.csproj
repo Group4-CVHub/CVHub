@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Scripts\UploadedFiles\" />
     <Folder Include="wwwroot\css\template\img\" />
   </ItemGroup>
 

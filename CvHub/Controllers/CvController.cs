@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace CVHub.Controllers
@@ -29,11 +30,12 @@ namespace CVHub.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create1([FromForm]CvTemp obj)
         {
-            Cv cv = new(){ 
+            Cv cv = new()
+            {
                 User = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault(),
                 AboutMe = obj.AboutMe,
                 Educations = obj.Educations,
-                Picture = obj.Picture,
+                //Picture =obj.Picture,
                 Template = _db.Templates.Find(1),
                 TemplateId = 1,
                 Title = obj.Title,
@@ -121,4 +123,5 @@ namespace CVHub.Controllers
             return Redirect("/User/MyPage");
         }
     }
+
 }
