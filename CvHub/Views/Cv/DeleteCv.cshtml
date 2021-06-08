@@ -6,15 +6,17 @@
     <div class="row templates" style="margin:3% auto 0 auto;">
 
         <div class="col">
-            <img src="~/css/template/img/cvimg.svg" style="width:70%" title="Minimalist" alt="Minimalist" />
+            <img class:"mx-auto" src="~/css/template/img/cvimg.svg" style="max-width:70%; margin-left:10rem; " title="Minimalist" alt="Minimalist" />
         </div>
     </div>
-    <div class="m-5 text-center">
+    <div class="m-5 text-center mx-auto">
         <h3 class="text-danger">Are you sure that you want to delete this CV?</h3>
-        <form asp-action="Delete" asp-route-id="@Model.CvId" method="post">
-            <button type="submit" class="btn btn-primary m-3" style="border:none;">Yes</button>
-        </form>
-        <a class="btn btn-danger m-3" style="border:none;" asp-action="CvList">No</a>
+        <div class="btn-group">
+            <form asp-action="Delete" asp-route-id="@Model.CvId" method="post">
+                <button type="submit" class="btn btn-primary m-3" style="border:none;">Yes</button>
+            </form>
+            <button class="btn btn-danger m-3" style="border:none;" asp-action="CvList">No</button>
+        </div>
     </div>
     <hr>
 

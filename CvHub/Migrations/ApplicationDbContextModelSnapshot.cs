@@ -29,9 +29,6 @@ namespace CVHub.Migrations
                     b.Property<string>("AboutMe")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Picture")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("TemplateId")
                         .HasColumnType("int");
 
