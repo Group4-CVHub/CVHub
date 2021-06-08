@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -25,6 +24,6 @@ namespace CVHub.Models
         public List<Education> Educations { get; set; }
         public List<Work> WorkPlaces { get; set; }
 
-  
+
     }
 }

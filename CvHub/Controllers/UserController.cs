@@ -29,7 +29,7 @@ namespace CVHub.Controllers
         [AllowAnonymous]
         [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([FromForm]User obj)
+        public IActionResult Create([FromForm] User obj)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace CVHub.Controllers
 
         [HttpPost("Update")]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([FromForm]User user)
+        public IActionResult Update([FromForm] User user)
         {
             if (ModelState.IsValid)
             {
@@ -141,16 +141,16 @@ namespace CVHub.Controllers
             }
             var _user = new ChangePasswordUser { UserId = user.UserId, OldPassword = user.Password, NewPassword = user.Password };
             return View(_user);
-            
+
         }
 
         [HttpPost("ChangePassword")]
         [ValidateAntiForgeryToken]
-        public IActionResult ChangePassword([FromForm]ChangePasswordUser fromFormUser)
+        public IActionResult ChangePassword([FromForm] ChangePasswordUser fromFormUser)
         {
             //Tvungen att göra såhär för det gick inte att få med userId från view av någon anledning... 
             User user = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault();
-            
+
 
             if (user.Password != fromFormUser.OldPassword)
             {

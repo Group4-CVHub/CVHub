@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace CVHub.Controllers
@@ -20,15 +19,9 @@ namespace CVHub.Controllers
             _db = db;
         }
 
-        [HttpGet("Index")]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create1([FromForm]CvTemp obj)
+        public IActionResult Create1([FromForm] CvTemp obj)
         {
             Cv cv = new()
             {
@@ -58,7 +51,7 @@ namespace CVHub.Controllers
         {
             var user = _db.Users.Where(u => u.Email == HttpContext.Session.GetString("Email")).FirstOrDefault();
             IEnumerable<Cv> cvs = _db.Cvs.Where(c => c.UserId == user.UserId).ToList();
-            return View(cvs); 
+            return View(cvs);
         }
 
         [HttpGet("Get")]
@@ -82,12 +75,12 @@ namespace CVHub.Controllers
             {
                 //fyller på utbildningar och jobb för objektet som ska visas i view.
                 if (cv.WorkPlaces == null)
-                { 
+                {
                     List<Work> workPlaces;
                     workPlaces = _db.WorkPlaces.Where(w => w.CvId == cv.CvId).ToList();
                     cv.WorkPlaces = workPlaces;
                 }
-                if(cv.Educations == null)
+                if (cv.Educations == null)
                 {
                     List<Education> educations;
                     educations = _db.Educations.Where(e => e.CvId == cv.CvId).ToList();
@@ -95,7 +88,7 @@ namespace CVHub.Controllers
                 }
 
 
-            return View("Cv", cv);
+                return View("Cv", cv);
             }
         }
 
@@ -109,7 +102,7 @@ namespace CVHub.Controllers
         public IActionResult DeleteCv(int? id)
         {
             var cv = _db.Cvs.Find(id);
-            CvDelete cvToDelete = new CvDelete { CvId = cv.CvId, Title = cv.Title };
+            CvDelete cvToDelete = new() { CvId = cv.CvId, Title = cv.Title };
             return View(cvToDelete);
         }
 

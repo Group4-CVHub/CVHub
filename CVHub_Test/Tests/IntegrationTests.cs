@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CVHub.Data;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -7,25 +7,14 @@ namespace CVHub_Test.Tests
 {
     public class IntegrationTests : IClassFixture<TestFixture<CvHub.Startup>>
     {
-        private HttpClient Client;
+        private readonly HttpClient Client;
 
-        public IntegrationTests(TestFixture<CvHub.Startup> fixture)
+        private readonly ApplicationDbContext _db;
+
+        public IntegrationTests(TestFixture<CvHub.Startup> fixture, ApplicationDbContext db)
         {
             Client = fixture.Client;
-        }
-
-
-        [Fact]
-        public async Task Get_Cv_Index_Should_Return_Code_302()
-        {
-            // Arrange
-            var request = "/Cv/Index";
-
-            // Act
-            var response = await Client.GetAsync(request);
-
-            // Assert
-            response.StatusCode.Equals(302);
+            _db = db;
         }
 
         [Fact]

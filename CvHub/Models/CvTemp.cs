@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CVHub.Models
 {
@@ -15,7 +8,7 @@ namespace CVHub.Models
         public string Title { get; set; }
         public string AboutMe { get; set; }
 
-        
+
         public string Picture { get; set; }
         public int TemplateId { get; set; }
         public int UserId { get; set; }
@@ -24,7 +17,7 @@ namespace CVHub.Models
         public Education Education { get; set; }
         public List<Education> Educations { get; set; }
         public List<Work> WorkPlaces { get; set; }
-    
+
 
         public CvTemp()
         {

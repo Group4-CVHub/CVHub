@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CVHub.Data;
 using CVHub.Models;
-using CVHub.Data;
-using System.Linq;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CVHub.Controllers
 {
@@ -37,20 +35,20 @@ namespace CVHub.Controllers
                 _db.Templates.Add(new Template { Description = "Minimalist" });
                 _db.SaveChanges();
             }
-            
+
             CvTemp cv = new();
             return View(cv);
         }
 
         [HttpPost("AddEducation"), ValidateAntiForgeryToken]
-        public IActionResult AddEducation([FromForm]CvTemp obj)
+        public IActionResult AddEducation([FromForm] CvTemp obj)
         {
             obj.Educations.Add(new Education());
             return View("TemplateForm1", obj);
         }
 
         [HttpPost("AddWork"), ValidateAntiForgeryToken]
-        public IActionResult AddWork([FromForm]CvTemp obj)
+        public IActionResult AddWork([FromForm] CvTemp obj)
         {
             obj.WorkPlaces.Add(new Work());
             return View("TemplateForm1", obj);

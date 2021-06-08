@@ -1,9 +1,6 @@
-﻿using CVHub.Data;
-using Microsoft.AspNetCore.Http;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Linq;
 using Xunit;
 
 namespace CVHub_Test.AutomatedUITests
@@ -77,7 +74,7 @@ namespace CVHub_Test.AutomatedUITests
             Assert.Equal("https://localhost:44382/Validation/SignIn?ReturnUrl=%2FTemplate%2FTemplateForm1", _driver.Url);
         }
 
-        
+
         public void Dispose()
         {
             _driver.Quit();

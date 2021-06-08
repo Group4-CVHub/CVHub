@@ -16,7 +16,7 @@ namespace CVHub.Data
         public DbSet<Cv> Cvs { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Education> Educations {get; set;}
+        public DbSet<Education> Educations { get; set; }
         public DbSet<Work> WorkPlaces { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

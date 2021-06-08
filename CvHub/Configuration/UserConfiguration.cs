@@ -12,7 +12,7 @@ namespace CVHub.Configuration
             modelBuilder.Property(u => u.UserId)
                         .ValueGeneratedOnAdd();
             modelBuilder.HasIndex(u => u.Email)
-                        .IsUnique();      
+                        .IsUnique();
             modelBuilder.HasMany(u => u.Cvs)
                         .WithOne(c => c.User);
         }

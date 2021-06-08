@@ -1,25 +1,22 @@
 ﻿using CVHub.Data;
 using CVHub.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
 
 namespace CVHub.Controllers
 {
-    
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
+        public HomeController(ApplicationDbContext db)
         {
-            _logger = logger;
             _db = db;
         }
 
-        
+
         public IActionResult Index()
         {
             //Gör så det alltid ska finnas en test användare som testerna kan köras mot.
@@ -39,7 +36,7 @@ namespace CVHub.Controllers
             return View();
         }
 
-        
+
         public IActionResult AboutUs()
         {
             return View();
