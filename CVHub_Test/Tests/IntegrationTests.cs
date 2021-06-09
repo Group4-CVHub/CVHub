@@ -1,4 +1,9 @@
 ﻿using CVHub.Data;
+using CVHub.Models;
+using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -17,17 +22,56 @@ namespace CVHub_Test.Tests
             _db = db;
         }
 
-        [Fact]
-        public async Task Get_Cv_CvList_Should_Return_Code_302()
+        [Fact, AllowAnonymous]
+        public async Task Post_Cv_Create1_Should_Return_OK_And_New_Cv_With_Correct_User()
         {
-            // Arrange
-            var request = "/Cv/CvList";
+            //Arrange
+            var testCvTemp = new CvTemp
+            {
+                AboutMe = "test2",
+                Title = "test2",
+                User = _db.Users.Find(1),
+                Template = _db.Templates.Find(1),
+                TemplateId = 1
+            };
+            var testEdu = new Education
+            {
+                EducationStart = DateTime.Now,
+                EducationStop = DateTime.Now,
+                Name = "test2",
+                Degree = "test2"
+            };
+            var testWork = new Work
+            {
+                Description = "test2",
+                Name = "test2",
+                WorkStart = DateTime.Now,
+                WorkStop = DateTime.Now
+            };
+            List<Education> educations = new();
+            List<Work> workPlaces = new();
+            educations.Add(testEdu);
+            workPlaces.Add(testWork);
+            testCvTemp.Educations = educations;
+            testCvTemp.WorkPlaces = workPlaces;
+            var request = new
+            {
+                Url = "/Cv/Create1",
+                Body = new
+                {
+                    testCvTemp
+                }
+            };
 
-            // Act
-            var response = await Client.GetAsync(request);
+            Cv testCv = new() { AboutMe = testCvTemp.AboutMe, Educations = testCvTemp.Educations, WorkPlaces = testCvTemp.WorkPlaces, TemplateId = testCvTemp.TemplateId, Title = testCvTemp.Title, User = testCvTemp.User, Template = testCvTemp.Template };
 
-            // Assert
-            response.StatusCode.Equals(302);
+            //Act
+            var response = await Client.PostAsync(request.Url, ContentHelper.GetStringContent(request.Body));
+
+            //Assert
+            response.IsSuccessStatusCode.Equals(true);
+            Assert.Equal(_db.Cvs.Where(c => c.AboutMe == "test" && c.Title == "test").FirstOrDefault().User, testCv.User);
+
         }
 
         [Fact]

@@ -30,12 +30,6 @@ namespace CVHub.Controllers
         [HttpGet("TemplateForm1")]
         public IActionResult TemplateForm1()
         {
-            if (_db.Templates.Find(1) == null)
-            {
-                _db.Templates.Add(new Template { Description = "Minimalist" });
-                _db.SaveChanges();
-            }
-
             CvTemp cv = new();
             return View(cv);
         }

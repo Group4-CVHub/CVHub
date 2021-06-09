@@ -41,7 +41,7 @@ namespace CVHub_Test.AutomatedUITests
                 .SendKeys("Test");
             _driver.FindElement(By.Id("country"))
                 .SendKeys("Test");
-            _driver.FindElement(By.Id("state"))
+            _driver.FindElement(By.Id("postalcode"))
                 .SendKeys("Test");
             _driver.FindElement(By.Id("city"))
                 .SendKeys("Test");
