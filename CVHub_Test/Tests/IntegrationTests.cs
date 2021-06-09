@@ -9,12 +9,9 @@ namespace CVHub_Test.Tests
     {
         private readonly HttpClient Client;
 
-        private readonly ApplicationDbContext _db;
-
-        public IntegrationTests(TestFixture<CvHub.Startup> fixture, ApplicationDbContext db)
+        public IntegrationTests(TestFixture<CvHub.Startup> fixture)
         {
             Client = fixture.Client;
-            _db = db;
         }
 
         [Fact]
